@@ -17,6 +17,12 @@
 		5C6D5D672B13331A0061AC56 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5C6D5D662B13331A0061AC56 /* FirebaseAnalyticsSwift */; };
 		5C6D5D692B13331A0061AC56 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 5C6D5D682B13331A0061AC56 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		5C6D5D6B2B13331A0061AC56 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 5C6D5D6A2B13331A0061AC56 /* FirebaseAppCheck */; };
+		5C6D5D6D2B13370F0061AC56 /* splashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D5D6C2B13370F0061AC56 /* splashScreen.swift */; };
+		5C6D5D6F2B1338970061AC56 /* permissionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D5D6E2B1338970061AC56 /* permissionScreen.swift */; };
+		5C6D5D712B1338C00061AC56 /* introRegisteration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D5D702B1338C00061AC56 /* introRegisteration.swift */; };
+		5C6D5D732B1338DA0061AC56 /* signUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D5D722B1338DA0061AC56 /* signUpScreen.swift */; };
+		5C6D5D752B1338E80061AC56 /* loginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D5D742B1338E70061AC56 /* loginScreen.swift */; };
+		5C6D5D772B13390F0061AC56 /* Let'sPlayScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D5D762B13390F0061AC56 /* Let'sPlayScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,12 @@
 		5C6D5D552B1330620061AC56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C6D5D582B1330620061AC56 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5C6D5D5F2B1331D40061AC56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5C6D5D6C2B13370F0061AC56 /* splashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splashScreen.swift; sourceTree = "<group>"; };
+		5C6D5D6E2B1338970061AC56 /* permissionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = permissionScreen.swift; sourceTree = "<group>"; };
+		5C6D5D702B1338C00061AC56 /* introRegisteration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = introRegisteration.swift; sourceTree = "<group>"; };
+		5C6D5D722B1338DA0061AC56 /* signUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpScreen.swift; sourceTree = "<group>"; };
+		5C6D5D742B1338E70061AC56 /* loginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginScreen.swift; sourceTree = "<group>"; };
+		5C6D5D762B13390F0061AC56 /* Let'sPlayScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Let'sPlayScreen.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +76,12 @@
 			isa = PBXGroup;
 			children = (
 				5C6D5D512B1330610061AC56 /* zooProjectFinalApp.swift */,
+				5C6D5D6C2B13370F0061AC56 /* splashScreen.swift */,
+				5C6D5D6E2B1338970061AC56 /* permissionScreen.swift */,
+				5C6D5D702B1338C00061AC56 /* introRegisteration.swift */,
+				5C6D5D722B1338DA0061AC56 /* signUpScreen.swift */,
+				5C6D5D742B1338E70061AC56 /* loginScreen.swift */,
+				5C6D5D762B13390F0061AC56 /* Let'sPlayScreen.swift */,
 				5C6D5D532B1330610061AC56 /* ContentView.swift */,
 				5C6D5D5F2B1331D40061AC56 /* GoogleService-Info.plist */,
 				5C6D5D552B1330620061AC56 /* Assets.xcassets */,
@@ -161,8 +179,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C6D5D6D2B13370F0061AC56 /* splashScreen.swift in Sources */,
+				5C6D5D712B1338C00061AC56 /* introRegisteration.swift in Sources */,
 				5C6D5D542B1330610061AC56 /* ContentView.swift in Sources */,
+				5C6D5D6F2B1338970061AC56 /* permissionScreen.swift in Sources */,
 				5C6D5D522B1330610061AC56 /* zooProjectFinalApp.swift in Sources */,
+				5C6D5D772B13390F0061AC56 /* Let'sPlayScreen.swift in Sources */,
+				5C6D5D732B1338DA0061AC56 /* signUpScreen.swift in Sources */,
+				5C6D5D752B1338E80061AC56 /* loginScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
