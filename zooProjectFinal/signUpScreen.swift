@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct signUpScreen: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    var body: some View { ZStack{
+        Color("BackgroundColor").edgesIgnoringSafeArea(.all)
+        VStack{
+            Spacer()
+            Image("logo")
+                .resizable()
+                .scaledToFit()
+                .frame(width:150 , height: 150)
+            Spacer(minLength: 520)
+            
+        }
+        
+    }
     }
 }
 

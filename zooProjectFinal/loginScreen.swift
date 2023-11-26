@@ -9,10 +9,20 @@ import SwiftUI
 
 struct loginScreen: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            Color("BackgroundColor").edgesIgnoringSafeArea(.all)
+            VStack{
+                Spacer()
+                Image("logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width:150 , height: 150)
+                Spacer(minLength: 520)
+            }
+            
+        }
     }
 }
-
 #Preview {
     loginScreen()
 }
