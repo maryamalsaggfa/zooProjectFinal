@@ -38,6 +38,7 @@
 		5C6D5D722B1338DA0061AC56 /* signUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpScreen.swift; sourceTree = "<group>"; };
 		5C6D5D742B1338E70061AC56 /* loginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginScreen.swift; sourceTree = "<group>"; };
 		5C6D5D762B13390F0061AC56 /* Let'sPlayScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Let'sPlayScreen.swift"; sourceTree = "<group>"; };
+		5C6D5D782B133F610061AC56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +76,7 @@
 		5C6D5D502B1330610061AC56 /* zooProjectFinal */ = {
 			isa = PBXGroup;
 			children = (
+				5C6D5D782B133F610061AC56 /* Info.plist */,
 				5C6D5D512B1330610061AC56 /* zooProjectFinalApp.swift */,
 				5C6D5D6C2B13370F0061AC56 /* splashScreen.swift */,
 				5C6D5D6E2B1338970061AC56 /* permissionScreen.swift */,
@@ -323,6 +325,8 @@
 				DEVELOPMENT_TEAM = KHXQ555L4S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = zooProjectFinal/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "$(MARKETING_VERSION)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -352,6 +356,8 @@
 				DEVELOPMENT_TEAM = KHXQ555L4S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = zooProjectFinal/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "$(MARKETING_VERSION)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
