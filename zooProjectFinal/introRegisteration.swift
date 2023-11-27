@@ -66,7 +66,6 @@ struct introRegisteration: View {
                                 Text("تسجيل الدخول")
                                     .foregroundColor(Color("Color2"))
                                     .font(.custom("Poppins", size: 14))
-
                                     .padding(.trailing, -4)
                             
                                 
