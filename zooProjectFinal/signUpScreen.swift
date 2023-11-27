@@ -8,7 +8,7 @@
 import SwiftUI
 import Foundation
 import Firebase
-
+import FirebaseDatabase
 
 
 
@@ -22,7 +22,8 @@ struct signUpScreen: View {
     @State private var errorMessageEmail: String?
     @State private var errorMessagePassword: String?
     @State private var errorMessageConfirmPassword: String?
- // let ref = Database.database().reference("Players")
+    let ref = Database.database().reference().child("Players")
+
     
     var body: some View {
         ZStack{
@@ -146,18 +147,50 @@ struct signUpScreen: View {
         }else{
             errorMessageConfirmPassword=nil
         }
+        
         if errorMessageUserName == nil,
                errorMessageEmail == nil,
                errorMessagePassword == nil,
            errorMessageConfirmPassword == nil {
-            //uploadto data base
+            
+            let newUser = Players(userName: userName, email: email, confirmPassWord: confirmPassword, password: password)
+            uploadToDatabase(Players: newUser)
         }
+        
         }
+    func uploadToDatabase(Players:Players) {
+        ref.queryOrdered(byChild: "userName").queryEqual(toValue: userName).observeSingleEvent(of: .value){ snapshot in
+            if (snapshot.exists()){
+                errorMessageUserName = "اسم المستخدم مستخدم بالفعل"
+                
+            }else{
+                ref.child("Players").child(Players.userName).setValue([
+                    "userName": Players.userName,
+                    "email": Players.email,
+                    "password": Players.password,
+                    "confirmPassWord":Players.confirmPassWord
+                    // Add other properties as needed
+                ]){ error, _ in
+                    if let error = error {
+                        print("خطأ في التسجيل: \(error.localizedDescription)")
+                    } else {
+                      //move to other page
+                        
+                      
+                    }
+                }
+
+                // Clear the error message (if any)
+                errorMessageUserName = nil
+                
+            }
+            
+        }
+  
     }
-func uploadToDatabase(){
     
-    
-}
+    }
+
 
 
 

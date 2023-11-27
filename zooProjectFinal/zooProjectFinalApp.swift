@@ -7,12 +7,14 @@
 
 import SwiftUI
 import FirebaseCore
+import Firebase
 @main
 struct zooProjectFinalApp: App {
+    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-            permissionScreen()
+            signUpScreen()
         }
     }
 }
@@ -23,3 +25,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     return true
   }
 }
+struct Players {
+    var userName: String
+    var email: String
+    var confirmPassWord:String
+    var password:String
+    // Add other properties as needed
+}
+
