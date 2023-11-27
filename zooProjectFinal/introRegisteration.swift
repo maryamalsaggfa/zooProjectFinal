@@ -53,9 +53,10 @@ struct introRegisteration: View {
                                 .padding()
                                 .background(Color("Color2"))
                                 .cornerRadius(80)
+                                .position(x:190, y: 585)
                         }
                     }
-                    .padding(.bottom, 150)
+                   
                     
                 }
                 VStack{
@@ -67,6 +68,7 @@ struct introRegisteration: View {
                                     .foregroundColor(Color("Color2"))
                                     .font(.custom("Poppins", size: 14))
                                     .padding(.trailing, -4)
+                                
                             
                                 
                             }
@@ -74,8 +76,9 @@ struct introRegisteration: View {
                                 .font(.custom("Poppins", size: 14))
                             .foregroundColor(Color("Color1"))
                     }
+                        .position(x:190, y: 630)
                     
-                }                     .padding(.bottom, 120)
+                }
 
             }
         }

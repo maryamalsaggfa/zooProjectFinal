@@ -14,6 +14,7 @@ import FirebaseDatabase
 
 
 struct signUpScreen: View {
+    
     @State private var email: String = ""
     @State private var userName: String = ""
     @State private var password: String = ""
@@ -22,6 +23,8 @@ struct signUpScreen: View {
     @State private var errorMessageEmail: String?
     @State private var errorMessagePassword: String?
     @State private var errorMessageConfirmPassword: String?
+    @State private var isEditing: Bool = false
+
     let ref = Database.database().reference().child("Players")
 
     
@@ -30,15 +33,20 @@ struct signUpScreen: View {
         Color("BackgroundColor").edgesIgnoringSafeArea(.all)
             VStack{
                 Spacer()
-                Image("logo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width:150 , height: 150)
-                Spacer(minLength: 90)
+                ZStack {
+                    Circle()
+                        .foregroundColor(Color("Color5"))
+                        .blur(radius: 100)
+                    Image("logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 150, height: 150)
+                }
+
                 Text("تسجيل جديد")
                     .foregroundColor(Color("Color2"))
                     .font(
-                        Font.custom("Poppins", size: 20
+                        Font.custom("Poppins", size: 30
                                    )
                         .weight(.bold)
                     )
@@ -49,7 +57,23 @@ struct signUpScreen: View {
                    
                     TextField("اسم المستخدم", text: $userName)
                         .padding()
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .multilineTextAlignment(.trailing)
+                        .padding(.trailing, 20)
+                        .foregroundColor(isEditing ? Color("Color2") : Color("Color1"))
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color("Color1"), lineWidth: 2)
+                                        .frame(width: 350, height: 40)
+                                )
+                    
+                                .onChange(of: userName) { newValue in
+                                    if newValue.isEmpty {
+                                        isEditing = false
+                                    } else {
+                                        isEditing = true
+                                    }
+                                }
+                    
                     //error message place
                     Text(errorMessageUserName ?? "")
                                   .foregroundColor(.red)
@@ -61,7 +85,22 @@ struct signUpScreen: View {
                     //
                     TextField("الايميل", text: $email)
                         .padding()
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .multilineTextAlignment(.trailing)
+                        .padding(.trailing, 20)
+                        .foregroundColor(isEditing ? Color("Color2") : Color("Color1"))
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color("Color1"), lineWidth: 2)
+                                        .frame(width: 350, height: 40)
+                                )
+                    
+                                .onChange(of: userName) { newValue in
+                                    if newValue.isEmpty {
+                                        isEditing = false
+                                    } else {
+                                        isEditing = true
+                                    }
+                                }
                     //error message place
                     Text(errorMessageEmail ?? "")
                                   .foregroundColor(.red)
@@ -74,7 +113,22 @@ struct signUpScreen: View {
                     
                     TextField("كلمة السر ", text: $password)
                         .padding()
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .multilineTextAlignment(.trailing)
+                        .padding(.trailing, 20)
+                        .foregroundColor(isEditing ? Color("Color2") : Color("Color1"))
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color("Color1"), lineWidth: 2)
+                                        .frame(width: 350, height: 40)
+                                )
+                    
+                                .onChange(of: userName) { newValue in
+                                    if newValue.isEmpty {
+                                        isEditing = false
+                                    } else {
+                                        isEditing = true
+                                    }
+                                }
                     Text(errorMessagePassword ?? "")
                                   .foregroundColor(.red)
                                   .font(
@@ -85,7 +139,22 @@ struct signUpScreen: View {
                     //
                     TextField("تأكيد كلمة السر ", text: $confirmPassword)
                         .padding()
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .multilineTextAlignment(.trailing)
+                        .padding(.trailing, 20)
+                        .foregroundColor(isEditing ? Color("Color2") : Color("Color1"))
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color("Color1"), lineWidth: 2)
+                                        .frame(width: 350, height: 40)
+                                )
+                    
+                                .onChange(of: userName) { newValue in
+                                    if newValue.isEmpty {
+                                        isEditing = false
+                                    } else {
+                                        isEditing = true
+                                    }
+                                }
                     Text(errorMessageConfirmPassword ?? "")
                                   .foregroundColor(.red)
                                   .font(
@@ -97,6 +166,7 @@ struct signUpScreen: View {
                     //
                     
                 }
+                
                 Button(action: {
                    checkAndUploadData()
 
@@ -109,10 +179,28 @@ struct signUpScreen: View {
                             .padding()
                             .background(Color("Color2"))
                             .cornerRadius(80)
+                        
                     }
                 }
                 .padding(.bottom, 150)
+     
             }
+            HStack {
+                
+                NavigationLink(destination: loginScreen()) {
+                    Text("تسجيل الدخول")
+                        .foregroundColor(Color("Color2"))
+                        .font(.custom("Poppins", size: 14))
+                        .padding(.trailing, -4)
+                
+                    
+                }
+                Text("هل لديك حساب مسبقاً؟")
+                    .font(.custom("Poppins", size: 14))
+                .foregroundColor(Color("Color1"))
+                
+            }  .position(x:200, y: 630)
+
            
         
     }
@@ -177,6 +265,7 @@ struct signUpScreen: View {
                       //move to other page
                         
                       
+                        
                     }
                 }
 
