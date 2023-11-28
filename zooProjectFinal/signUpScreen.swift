@@ -24,13 +24,13 @@ struct signUpScreen: View {
     @State private var errorMessagePassword: String?
     @State private var errorMessageConfirmPassword: String?
     @State private var isEditing: Bool = false
-
+    
     let ref = Database.database().reference().child("Players")
-
+    
     
     var body: some View {
         ZStack{
-        Color("BackgroundColor").edgesIgnoringSafeArea(.all)
+            Color("BackgroundColor").edgesIgnoringSafeArea(.all)
             VStack{
                 Spacer()
                 ZStack {
@@ -42,7 +42,7 @@ struct signUpScreen: View {
                         .scaledToFit()
                         .frame(width: 150, height: 150)
                 }
-
+                
                 Text("تسجيل جديد")
                     .foregroundColor(Color("Color2"))
                     .font(
@@ -54,61 +54,61 @@ struct signUpScreen: View {
                     .frame(alignment: .top)
                     .padding(.bottom, 10)
                 VStack{
-                   
+                    
                     TextField("اسم المستخدم", text: $userName)
                         .padding()
                         .multilineTextAlignment(.trailing)
                         .padding(.trailing, 20)
                         .foregroundColor(isEditing ? Color("Color2") : Color("Color1"))
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color("Color1"), lineWidth: 2)
-                                        .frame(width: 350, height: 40)
-                                )
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color("Color1"), lineWidth: 2)
+                                .frame(width: 350, height: 40)
+                        )
                     
-                                .onChange(of: userName) { newValue in
-                                    if newValue.isEmpty {
-                                        isEditing = false
-                                    } else {
-                                        isEditing = true
-                                    }
-                                }
+                        .onChange(of: userName) { newValue in
+                            if newValue.isEmpty {
+                                isEditing = false
+                            } else {
+                                isEditing = true
+                            }
+                        }
                     
                     //error message place
                     Text(errorMessageUserName ?? "")
-                                  .foregroundColor(.red)
-                                  .font(
-                                      Font.custom("Poppins", size: 12
-                                                 )
-                                      .weight(.bold)
-                                  )
+                        .foregroundColor(.red)
+                        .font(
+                            Font.custom("Poppins", size: 12
+                                       )
+                            .weight(.bold)
+                        )
                     //
                     TextField("الايميل", text: $email)
                         .padding()
                         .multilineTextAlignment(.trailing)
                         .padding(.trailing, 20)
                         .foregroundColor(isEditing ? Color("Color2") : Color("Color1"))
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color("Color1"), lineWidth: 2)
-                                        .frame(width: 350, height: 40)
-                                )
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color("Color1"), lineWidth: 2)
+                                .frame(width: 350, height: 40)
+                        )
                     
-                                .onChange(of: userName) { newValue in
-                                    if newValue.isEmpty {
-                                        isEditing = false
-                                    } else {
-                                        isEditing = true
-                                    }
-                                }
+                        .onChange(of: userName) { newValue in
+                            if newValue.isEmpty {
+                                isEditing = false
+                            } else {
+                                isEditing = true
+                            }
+                        }
                     //error message place
                     Text(errorMessageEmail ?? "")
-                                  .foregroundColor(.red)
-                                  .font(
-                                      Font.custom("Poppins", size: 12
-                                                )
-                                      .weight(.bold)
-                                  )
+                        .foregroundColor(.red)
+                        .font(
+                            Font.custom("Poppins", size: 12
+                                       )
+                            .weight(.bold)
+                        )
                     //
                     
                     TextField("كلمة السر ", text: $password)
@@ -116,60 +116,60 @@ struct signUpScreen: View {
                         .multilineTextAlignment(.trailing)
                         .padding(.trailing, 20)
                         .foregroundColor(isEditing ? Color("Color2") : Color("Color1"))
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color("Color1"), lineWidth: 2)
-                                        .frame(width: 350, height: 40)
-                                )
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color("Color1"), lineWidth: 2)
+                                .frame(width: 350, height: 40)
+                        )
                     
-                                .onChange(of: userName) { newValue in
-                                    if newValue.isEmpty {
-                                        isEditing = false
-                                    } else {
-                                        isEditing = true
-                                    }
-                                }
+                        .onChange(of: userName) { newValue in
+                            if newValue.isEmpty {
+                                isEditing = false
+                            } else {
+                                isEditing = true
+                            }
+                        }
                     Text(errorMessagePassword ?? "")
-                                  .foregroundColor(.red)
-                                  .font(
-                                      Font.custom("Poppins", size: 12
-                                                 )
-                                      .weight(.bold)
-                                  )
+                        .foregroundColor(.red)
+                        .font(
+                            Font.custom("Poppins", size: 12
+                                       )
+                            .weight(.bold)
+                        )
                     //
                     TextField("تأكيد كلمة السر ", text: $confirmPassword)
                         .padding()
                         .multilineTextAlignment(.trailing)
                         .padding(.trailing, 20)
                         .foregroundColor(isEditing ? Color("Color2") : Color("Color1"))
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color("Color1"), lineWidth: 2)
-                                        .frame(width: 350, height: 40)
-                                )
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color("Color1"), lineWidth: 2)
+                                .frame(width: 350, height: 40)
+                        )
                     
-                                .onChange(of: userName) { newValue in
-                                    if newValue.isEmpty {
-                                        isEditing = false
-                                    } else {
-                                        isEditing = true
-                                    }
-                                }
+                        .onChange(of: userName) { newValue in
+                            if newValue.isEmpty {
+                                isEditing = false
+                            } else {
+                                isEditing = true
+                            }
+                        }
                     Text(errorMessageConfirmPassword ?? "")
-                                  .foregroundColor(.red)
-                                  .font(
-                                      Font.custom("Poppins", size: 12
-                                                 )
-                                      .weight(.bold)
-                                  )
-                                  .padding(.bottom,5)
+                        .foregroundColor(.red)
+                        .font(
+                            Font.custom("Poppins", size: 12
+                                       )
+                            .weight(.bold)
+                        )
+                        .padding(.bottom,5)
                     //
                     
                 }
                 
                 Button(action: {
-                   checkAndUploadData()
-
+                    checkAndUploadData()
+                    
                 }) {
                     NavigationLink(destination: loginScreen()) {
                         Text("تسجيل")
@@ -183,7 +183,7 @@ struct signUpScreen: View {
                     }
                 }
                 .padding(.bottom, 150)
-     
+                
             }
             HStack {
                 
@@ -192,26 +192,26 @@ struct signUpScreen: View {
                         .foregroundColor(Color("Color2"))
                         .font(.custom("Poppins", size: 14))
                         .padding(.trailing, -4)
-                
+                    
                     
                 }
                 Text("هل لديك حساب مسبقاً؟")
                     .font(.custom("Poppins", size: 14))
-                .foregroundColor(Color("Color1"))
+                    .foregroundColor(Color("Color1"))
                 
             }  .position(x:200, y: 630)
-
-           
+            
+            
+            
+        }
         
     }
-       
-        }
     func checkAndUploadData(){
         if userName.isEmpty{
             errorMessageUserName = "قم بتعبئة اسم المستخدم !"
-                   } else {
-                       errorMessageUserName = nil
-                   }
+        } else {
+            errorMessageUserName = nil
+        }
         if email.isEmpty{
             errorMessageEmail="قم بتعبئة الايميل !"
         }else if !isValidEmail(email) {
@@ -237,53 +237,57 @@ struct signUpScreen: View {
         }
         
         if errorMessageUserName == nil,
-               errorMessageEmail == nil,
-               errorMessagePassword == nil,
+           errorMessageEmail == nil,
+           errorMessagePassword == nil,
            errorMessageConfirmPassword == nil {
             
             let newUser = Players(userName: userName, email: email, confirmPassWord: confirmPassword, password: password)
-            uploadToDatabase(Players: newUser)
+            uploadToDatabase(players: newUser)
         }
         
-        }
-    func uploadToDatabase(Players:Players) {
-        ref.queryOrdered(byChild: "userName").queryEqual(toValue: userName).observeSingleEvent(of: .value){ snapshot in
-            if (snapshot.exists()){
-                errorMessageUserName = "اسم المستخدم مستخدم بالفعل"
+    }
+    func uploadToDatabase(players: Players) {
+        // Step 1: Create user with email and password
+        Auth.auth().createUser(withEmail: "\(players.userName)@example.com", password: players.password) { authResult, error in
+            if let error = error {
+                print("Error signing up: \(error.localizedDescription)")
+                errorMessageUserName = "خطأ في التسجيل: \(error.localizedDescription)"
+            } else {
+                // Step 2: Successfully signed up, now update the user information in the database
+                guard let uid = authResult?.user.uid else {
+                    print("Error getting user ID after sign up.")
+                    errorMessageUserName = "حدث خطأ غير متوقع."
+                    return
+                }
                 
-            }else{
-                ref.child("Players").child(Players.userName).setValue([
-                    "userName": Players.userName,
-                    "email": Players.email,
-                    "password": Players.password,
-                    "confirmPassWord":Players.confirmPassWord
-                    // Add other properties as needed
-                ]){ error, _ in
-                    if let error = error {
-                        print("خطأ في التسجيل: \(error.localizedDescription)")
+                // Step 3: Check if the username already exists in the database
+                ref.queryOrdered(byChild: "userName").queryEqual(toValue: players.userName).observeSingleEvent(of: .value) { snapshot in
+                    if snapshot.exists() {
+                        errorMessageUserName = "اسم المستخدم مستخدم بالفعل"
                     } else {
-                      //move to other page
-                        
-                      
-                        
+                        // Step 4: Username is not taken, update user information in the database
+                        let userRef = ref.child("Players").child(uid)
+                        userRef.setValue([
+                            "userName": players.userName,
+                            "email":players.email,
+                            "password": players.password,
+                            "confirmPassWord": players.confirmPassWord
+                            // Add other properties as needed
+                        ]) { error, _ in
+                            if let error = error {
+                                print("Error updating user information: \(error.localizedDescription)")
+                                errorMessageUserName = "خطأ في تحديث معلومات المستخدم."
+                            } else {
+                                // Step 5: Move to other page or perform other actions upon successful sign up
+                               
+                            }
+                        }
                     }
                 }
-
-                // Clear the error message (if any)
-                errorMessageUserName = nil
-                
             }
-            
         }
-  
     }
-    
-    }
-
-
-
-
-
+}
 
 func isValidEmail(_ email: String) -> Bool {
     let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"

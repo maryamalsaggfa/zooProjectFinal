@@ -14,7 +14,7 @@ struct zooProjectFinalApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-            signUpScreen()
+           loginScreen()
         }
     }
 }
@@ -30,6 +30,7 @@ struct Players {
     var email: String
     var confirmPassWord:String
     var password:String
+    
     // Add other properties as needed
 }
 
