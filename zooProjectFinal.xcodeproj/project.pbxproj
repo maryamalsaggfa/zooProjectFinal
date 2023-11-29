@@ -37,6 +37,10 @@
 		5CCB163B2B14B16C00BA5000 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5CCB163A2B14B16C00BA5000 /* FirebaseDatabase */; };
 		5CCB163D2B14B17100BA5000 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5CCB163C2B14B17100BA5000 /* FirebaseAuth */; };
 		5CCB163F2B14B17600BA5000 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5CCB163E2B14B17600BA5000 /* FirebaseDatabaseSwift */; };
+		5CFEE88D2B17294D00D3ECAE /* LionAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFEE88C2B17294D00D3ECAE /* LionAR.swift */; };
+		5CFEE88F2B17296000D3ECAE /* ARcat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFEE88E2B17296000D3ECAE /* ARcat.swift */; };
+		5CFEE8912B17296E00D3ECAE /* sendInvation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFEE8902B17296E00D3ECAE /* sendInvation.swift */; };
+		5CFEE8932B17297C00D3ECAE /* acceptInvation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFEE8922B17297C00D3ECAE /* acceptInvation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +57,10 @@
 		5C6D5D742B1338E70061AC56 /* loginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginScreen.swift; sourceTree = "<group>"; };
 		5C6D5D762B13390F0061AC56 /* Let'sPlayScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Let'sPlayScreen.swift"; sourceTree = "<group>"; };
 		5C6D5D782B133F610061AC56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5CFEE88C2B17294D00D3ECAE /* LionAR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LionAR.swift; sourceTree = "<group>"; };
+		5CFEE88E2B17296000D3ECAE /* ARcat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARcat.swift; sourceTree = "<group>"; };
+		5CFEE8902B17296E00D3ECAE /* sendInvation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sendInvation.swift; sourceTree = "<group>"; };
+		5CFEE8922B17297C00D3ECAE /* acceptInvation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = acceptInvation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +115,10 @@
 			children = (
 				5C6D5D782B133F610061AC56 /* Info.plist */,
 				5C6D5D512B1330610061AC56 /* zooProjectFinalApp.swift */,
+				5CFEE88C2B17294D00D3ECAE /* LionAR.swift */,
+				5CFEE88E2B17296000D3ECAE /* ARcat.swift */,
+				5CFEE8902B17296E00D3ECAE /* sendInvation.swift */,
+				5CFEE8922B17297C00D3ECAE /* acceptInvation.swift */,
 				5C6D5D6C2B13370F0061AC56 /* splashScreen.swift */,
 				5C6D5D6E2B1338970061AC56 /* permissionScreen.swift */,
 				5C6D5D702B1338C00061AC56 /* introRegisteration.swift */,
@@ -234,8 +246,12 @@
 				5C6D5D6D2B13370F0061AC56 /* splashScreen.swift in Sources */,
 				5C6D5D712B1338C00061AC56 /* introRegisteration.swift in Sources */,
 				5C6D5D542B1330610061AC56 /* ContentView.swift in Sources */,
+				5CFEE88F2B17296000D3ECAE /* ARcat.swift in Sources */,
 				5C6D5D6F2B1338970061AC56 /* permissionScreen.swift in Sources */,
 				5C6D5D522B1330610061AC56 /* zooProjectFinalApp.swift in Sources */,
+				5CFEE8912B17296E00D3ECAE /* sendInvation.swift in Sources */,
+				5CFEE8932B17297C00D3ECAE /* acceptInvation.swift in Sources */,
+				5CFEE88D2B17294D00D3ECAE /* LionAR.swift in Sources */,
 				5C6D5D772B13390F0061AC56 /* Let'sPlayScreen.swift in Sources */,
 				5C6D5D732B1338DA0061AC56 /* signUpScreen.swift in Sources */,
 				5C6D5D752B1338E80061AC56 /* loginScreen.swift in Sources */,

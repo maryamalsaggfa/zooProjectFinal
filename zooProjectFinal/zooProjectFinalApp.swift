@@ -30,7 +30,7 @@ struct Players {
     var email: String
     var confirmPassWord:String
     var password:String
-    
+    var currentLocation:String
     // Add other properties as needed
 }
 
