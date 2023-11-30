@@ -302,15 +302,14 @@ struct signUpScreen: View {
         
         }
     func uploadToDatabase(Players:Players) {
-       
+        let latitude = locationManager.currentLocation?.coordinate.latitude ?? 0.0
+                      let longitude = locationManager.currentLocation?.coordinate.longitude ?? 0.0
 
-        ref.queryOrdered(byChild: "userName").queryEqual(toValue: Players.userName).observeSingleEvent(of: .value){ snapshot in
+        ref.queryOrdered(byChild: "userName").queryEqual(toValue: userName).observeSingleEvent(of: .value){ snapshot in
             if (snapshot.exists()){
                 errorMessageUserName = "اسم المستخدم مستخدم بالفعل"
                 
             }else{
-                let latitude = locationManager.currentLocation?.coordinate.latitude ?? 0.0
-                              let longitude = locationManager.currentLocation?.coordinate.longitude ?? 0.0
                 ref.child(Players.userName).setValue([
                     "userName": Players.userName,
                     "email": Players.email,

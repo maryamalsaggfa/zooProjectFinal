@@ -17,7 +17,7 @@ struct zooProjectFinalApp: App {
 
     var body: some Scene {
         WindowGroup {
-           signUpScreen()
+          sendInvation()
         }
     }
 }
@@ -36,5 +36,11 @@ struct Players {
     var latitude:String
     var longitude:String
     // Add other properties as needed
+}
+struct invations{
+    var invationKey :UUID
+    var senderLionKey:String
+    var isAccepted:String
+    var accepterCatID:String
 }
 
