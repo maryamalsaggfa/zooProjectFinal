@@ -10,8 +10,38 @@ import Foundation
 import Firebase
 import FirebaseDatabase
 
+import CoreLocation
 
+class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+    private var locationManager = CLLocationManager()
 
+    @Published var currentLocation: CLLocation?
+
+    override init() {
+        super.init()
+        setupLocationManager()
+    }
+
+    func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+
+    func startLocationUpdates() {
+        locationManager.startUpdatingLocation()
+    }
+
+    func stopLocationUpdates() {
+        locationManager.stopUpdatingLocation()
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            currentLocation = location
+        }
+    }
+}
 
 struct signUpScreen: View {
     
@@ -25,14 +55,37 @@ struct signUpScreen: View {
     @State private var errorMessagePassword: String?
     @State private var errorMessageConfirmPassword: String?
     @State private var isEditing: Bool = false
-
+    
+    @ObservedObject private var locationManager = LocationManager()
+    
     let ref = Database.database().reference().child("Players")
 
     
     var body: some View {
         ZStack{
+        
         Color("BackgroundColor").edgesIgnoringSafeArea(.all)
             VStack{
+            
+                if let location = locationManager.currentLocation {
+                    Text("Latitude: \(location.coordinate.latitude)")
+                        .foregroundColor(Color(.red))
+                        .padding(.top,100)
+                          Text("Longitude: \(location.coordinate.longitude)")
+                        .foregroundColor(Color(.red))
+                      } else {
+                          Text("Waiting for location...")
+                      }
+
+                      Button("Start Location Updates") {
+                          locationManager.startLocationUpdates()
+                      }
+                      .padding()
+
+                      Button("Stop Location Updates") {
+                          locationManager.stopLocationUpdates()
+                      }
+                      .padding()
                 Spacer()
                 ZStack {
                     Circle()
@@ -242,23 +295,30 @@ struct signUpScreen: View {
                errorMessagePassword == nil,
            errorMessageConfirmPassword == nil {
             
-            let newUser = Players(userName: userName, email: email, confirmPassWord: confirmPassword, password: password,currentLocation: curentLocation)
+            let newUser = Players(userName: userName, email: email, confirmPassWord: confirmPassword, password: password,latitude: "",longitude: "")
+            
             uploadToDatabase(Players: newUser)
         }
         
         }
     func uploadToDatabase(Players:Players) {
-        ref.queryOrdered(byChild: "userName").queryEqual(toValue: userName).observeSingleEvent(of: .value){ snapshot in
+       
+
+        ref.queryOrdered(byChild: "userName").queryEqual(toValue: Players.userName).observeSingleEvent(of: .value){ snapshot in
             if (snapshot.exists()){
                 errorMessageUserName = "اسم المستخدم مستخدم بالفعل"
                 
             }else{
+                let latitude = locationManager.currentLocation?.coordinate.latitude ?? 0.0
+                              let longitude = locationManager.currentLocation?.coordinate.longitude ?? 0.0
                 ref.child(Players.userName).setValue([
                     "userName": Players.userName,
                     "email": Players.email,
                     "password": Players.password,
                     "confirmPassWord":Players.confirmPassWord,
-                    "currentLocation":Players.currentLocation
+                    "latitude": latitude,
+                    "longitude": longitude
+                   
                     // Add other properties as needed
                 ]){ error, _ in
                     if let error = error {

@@ -8,13 +8,16 @@
 import SwiftUI
 import FirebaseCore
 import Firebase
+import CoreLocation
 @main
 struct zooProjectFinalApp: App {
-    
+
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    let locationManager = CLLocationManager()
+
     var body: some Scene {
         WindowGroup {
-           loginScreen()
+           signUpScreen()
         }
     }
 }
@@ -30,7 +33,8 @@ struct Players {
     var email: String
     var confirmPassWord:String
     var password:String
-    var currentLocation:String
+    var latitude:String
+    var longitude:String
     // Add other properties as needed
 }
 
