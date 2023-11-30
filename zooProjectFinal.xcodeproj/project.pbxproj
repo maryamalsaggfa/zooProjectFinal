@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5ACF688E2B18D604000CCEE9 /* Ithra-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ACF688C2B18D603000CCEE9 /* Ithra-Light.ttf */; };
+		5ACF688F2B18D604000CCEE9 /* Ithra-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ACF688D2B18D604000CCEE9 /* Ithra-Bold.ttf */; };
 		5C6D5D522B1330610061AC56 /* zooProjectFinalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D5D512B1330610061AC56 /* zooProjectFinalApp.swift */; };
 		5C6D5D542B1330610061AC56 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D5D532B1330610061AC56 /* ContentView.swift */; };
 		5C6D5D562B1330620061AC56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C6D5D552B1330620061AC56 /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5ACF688C2B18D603000CCEE9 /* Ithra-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ithra-Light.ttf"; sourceTree = "<group>"; };
+		5ACF688D2B18D604000CCEE9 /* Ithra-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ithra-Bold.ttf"; sourceTree = "<group>"; };
 		5C6D5D4E2B1330610061AC56 /* zooProjectFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zooProjectFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C6D5D512B1330610061AC56 /* zooProjectFinalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zooProjectFinalApp.swift; sourceTree = "<group>"; };
 		5C6D5D532B1330610061AC56 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -115,19 +119,21 @@
 			children = (
 				5C6D5D782B133F610061AC56 /* Info.plist */,
 				5C6D5D512B1330610061AC56 /* zooProjectFinalApp.swift */,
-				5CFEE88C2B17294D00D3ECAE /* LionAR.swift */,
-				5CFEE88E2B17296000D3ECAE /* ARcat.swift */,
-				5CFEE8902B17296E00D3ECAE /* sendInvation.swift */,
-				5CFEE8922B17297C00D3ECAE /* acceptInvation.swift */,
 				5C6D5D6C2B13370F0061AC56 /* splashScreen.swift */,
-				5C6D5D6E2B1338970061AC56 /* permissionScreen.swift */,
 				5C6D5D702B1338C00061AC56 /* introRegisteration.swift */,
 				5C6D5D722B1338DA0061AC56 /* signUpScreen.swift */,
 				5C6D5D742B1338E70061AC56 /* loginScreen.swift */,
+				5CFEE8902B17296E00D3ECAE /* sendInvation.swift */,
 				5C6D5D762B13390F0061AC56 /* Let'sPlayScreen.swift */,
+				5CFEE8922B17297C00D3ECAE /* acceptInvation.swift */,
+				5CFEE88C2B17294D00D3ECAE /* LionAR.swift */,
+				5CFEE88E2B17296000D3ECAE /* ARcat.swift */,
+				5C6D5D6E2B1338970061AC56 /* permissionScreen.swift */,
 				5C6D5D532B1330610061AC56 /* ContentView.swift */,
 				5C6D5D5F2B1331D40061AC56 /* GoogleService-Info.plist */,
 				5C6D5D552B1330620061AC56 /* Assets.xcassets */,
+				5ACF688D2B18D604000CCEE9 /* Ithra-Bold.ttf */,
+				5ACF688C2B18D603000CCEE9 /* Ithra-Light.ttf */,
 				5C6D5D572B1330620061AC56 /* Preview Content */,
 			);
 			path = zooProjectFinal;
@@ -230,6 +236,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ACF688F2B18D604000CCEE9 /* Ithra-Bold.ttf in Resources */,
+				5ACF688E2B18D604000CCEE9 /* Ithra-Light.ttf in Resources */,
 				5C6D5D592B1330620061AC56 /* Preview Assets.xcassets in Resources */,
 				5C6D5D562B1330620061AC56 /* Assets.xcassets in Resources */,
 				5C6D5D602B1331D40061AC56 /* GoogleService-Info.plist in Resources */,
@@ -388,7 +396,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"zooProjectFinal/Preview Content\"";
-				DEVELOPMENT_TEAM = KHXQ555L4S;
+				DEVELOPMENT_TEAM = 25ANLCX5P6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = zooProjectFinal/Info.plist;
@@ -422,7 +430,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"zooProjectFinal/Preview Content\"";
-				DEVELOPMENT_TEAM = KHXQ555L4S;
+				DEVELOPMENT_TEAM = 25ANLCX5P6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = zooProjectFinal/Info.plist;

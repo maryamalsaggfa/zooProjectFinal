@@ -21,41 +21,91 @@ struct sendInvation: View {
     var playersRef = Database.database().reference().child("Players")
 
     var body: some View {
-        Text("Add your friend")
-        Text(errorMessageUserName ?? "")
-                      .foregroundColor(.red)
-                      .font(
-                          Font.custom("Poppins", size: 12
-                                     )
-                          .weight(.bold)
-                      )
-        Text(errorMessage ?? "")
-                      .foregroundColor(.red)
-                      .font(
-                          Font.custom("Poppins", size: 12
-                                     )
-                          .weight(.bold)
-                      )
-        VStack{
-            TextField("enter your user name",text: $senderUserName)
-                .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            TextField("enter your friend user name",text: $accepterUserName)
-                .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+        ZStack{
+            Color("BackgroundColor")
+                .edgesIgnoringSafeArea(.all)
+            ZStack {
+                Circle()
+                    .foregroundColor(Color("Color5"))
+                    .blur(radius: 100)
+                Image("logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 150, height: 150)
+            }                    .offset(y: -250)
             
-            Button(action:{
-                //send inavtion
-                checkAndUpload()
-            }){
-                Text("Send Invation")
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(10)
+            VStack{
+              
+                
+                Text("استعد لبدء المغامرة!                                                                                          قم بدعوة صديقك ليكون جزءًا من التجربة الرائعة.")
+                    .font(.custom("Ithra-Light", size: 16))
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(Color("Color1"))
+                    .padding(.bottom ,270 )
+            }
+                
+                Text(errorMessageUserName ?? "")
+                    .foregroundColor(.red)
+                    .font(
+                        Font.custom("Poppins", size: 12
+                                   )
+                        .weight(.bold)
+                    )
+                Text(errorMessage ?? "")
+                    .foregroundColor(.red)
+                    .font(
+                        Font.custom("Poppins", size: 12
+                                   )
+                        .weight(.bold)
+                    )
+                VStack{
+                    TextField("أدخل اسمك",text: $senderUserName)
+                        .padding()
+                        .multilineTextAlignment(.trailing)
+                        .padding(.trailing, 20)
+                        .foregroundColor( Color("Color2") )
+                        .font(.custom("Ithra-Bold", size: 16))
+
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color("Color1"), lineWidth: 2)
+                                        .frame(width: 350, height: 40)
+                                )
+                    TextField("أدخل اسم صديقك ",text: $accepterUserName)
+                        .padding()
+                        .multilineTextAlignment(.trailing)
+                        .padding(.trailing, 20)
+                        .foregroundColor( Color("Color2") )
+                        .font(.custom("Ithra-Light", size: 16))
+
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color("Color1"), lineWidth: 2)
+                                        .frame(width: 350,
+                                            height: 40)
+                                )
+                    
+                    Button(action:{
+                        //send inavtion
+                        checkAndUpload()
+                    }){
+                        Text("أرسل الدعوه ")
+                            .frame(width: 200, height: 15)
+                            .font(.custom("Ithra-Bold", size: 16))
+
+                            .fontWeight(.bold)
+                            .foregroundColor(Color("BackgroundColor"))
+                            .padding()
+                            .background(Color("Color2"))
+                            .cornerRadius(80)
+                            .offset(y: 80)
+
+                    }
+                }
+                
             }
         }
-    }
+    
     func checkAndUpload(){
         if (senderUserName.isEmpty || accepterUserName.isEmpty){
             errorMessageUserName="fill all the text filed"

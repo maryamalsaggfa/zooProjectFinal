@@ -17,13 +17,12 @@ struct loginScreen: View {
     @State private var errorMessageUserName: String?
     @State private var errorMessagePassword: String?
     
-    
+
     
     var body: some View {
-        ZStack{
-            Color("BackgroundColor").edgesIgnoringSafeArea(.all)
-            VStack{
-                Spacer()
+        NavigationView {
+            ZStack{
+                Color("BackgroundColor").edgesIgnoringSafeArea(.all)
                 ZStack {
                     Circle()
                         .foregroundColor(Color("Color5"))
@@ -32,118 +31,109 @@ struct loginScreen: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 150, height: 150)
-                }
-                
-                Text("تسجيل الدخول ")
-                    .foregroundColor(Color("Color2"))
-                    .font(
-                        Font.custom("Poppins", size: 30
-                                   )
-                        .weight(.bold)
-                    )
-                    .multilineTextAlignment(.center)
-                    .frame(alignment: .top)
-                    .padding(.bottom, 500)
-                
-                
-            }
-            VStack{
-                TextField("اسم المستخدم", text: $userName)
-                    .padding()
-                    .multilineTextAlignment(.trailing)
-                    .padding(.trailing, 20)
-                    .foregroundColor(isEditing ? Color("Color2") : Color("Color1"))
-                    .background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color("Color1"), lineWidth: 2)
-                            .frame(width: 350, height: 40)
-                    )
-                
-                    .onChange(of: userName) { newValue in
-                        if newValue.isEmpty {
-                            isEditing = false
-                        } else {
-                            isEditing = true
-                        }
-                    }
-                //error message place
-                Text(errorMessageUserName ?? "")
-                    .foregroundColor(.red)
-                    .font(
-                        Font.custom("Poppins", size: 12
-                                   )
-                        .weight(.bold)
-                    )
-                //
-                TextField("كلمة السر ", text: $password)
-                    .padding()
-                    .multilineTextAlignment(.trailing)
-                    .padding(.trailing, 20)
-                    .foregroundColor(isEditing ? Color("Color2") : Color("Color1"))
-                    .background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color("Color1"), lineWidth: 2)
-                            .frame(width: 350, height: 40)
-                    )
-                
-                    .onChange(of: password) { newValue in
-                        if newValue.isEmpty {
-                            isEditing = false
-                        } else {
-                            isEditing = true
-                        }
-                    }
-                Text(errorMessagePassword ?? "")
-                    .foregroundColor(.red)
-                    .font(
-                        Font.custom("Poppins", size: 12
-                                   )
-                        .weight(.bold)
-                    )
-                    .padding(.bottom,5)
-                //
-                
-                
-            }
-            VStack{
-                Button(action: {
-                    print("تم النقر على الزر!")
-                    checkAndLogin(userName: userName, password: password)
-                }) {
+                    
+                } .offset(y: -250)
+                VStack{
+                    Spacer()
                     
                     
                     Text("تسجيل الدخول ")
-                        .frame(width: 200, height: 15)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color("BackgroundColor"))
-                        .padding()
-                        .background(Color("Color2"))
-                        .cornerRadius(80)
-                        .position(x:190, y: 585)
+                        .foregroundColor(Color("Color2"))
+                        .font(.custom("Ithra-Bold", size: 25))
+                        .multilineTextAlignment(.center)
+                        .frame(alignment: .top)
+                        .padding(.bottom, 500)
                     
                     
                 }
-                HStack {
+                VStack{
+                    TextField("اسم المستخدم", text: $userName)
+                        .padding()
+                        .multilineTextAlignment(.trailing)
+                        .padding(.trailing, 20)
+                        .foregroundColor( Color("Color2") )
+                        .font(.custom("Ithra-light", size: 14))
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color("Color1"), lineWidth: 2)
+                                .frame(width: 350, height: 40)
+                        )
                     
-                    NavigationLink(destination: signUpScreen()) {
-                        Text("تسجيل جديد ")
-                            .foregroundColor(Color("Color2"))
-                            .font(.custom("Poppins", size: 14))
-                            .padding(.trailing, -4)
+                    
+                    //error message place
+                    Text(errorMessageUserName ?? "")
+                        .foregroundColor(.red)
+                        .font(.custom("Ithra-light", size: 14))
+                    
+                    //
+                    TextField("كلمة السر ", text: $password)
+                        .padding()
+                    
+                        .multilineTextAlignment(.trailing)
+                        .padding(.trailing, 20)
+                        .foregroundColor( Color("Color2"))
+                        .font(.custom("Ithra-light", size: 14))
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color("Color1"), lineWidth: 2)
+                                .frame(width: 350, height: 40)
+                            
+                        )
+                    
+                    
+                    Text(errorMessagePassword ?? "")
+                        .foregroundColor(.red)
+                        .font(.custom("Ithra-light", size: 14))
+                        .padding(.bottom,5)
+                    //
+                    
+                    
+                }
+                VStack{
+                    Button(action: {
+                        print("تم النقر على الزر!")
+                        checkAndLogin(userName: userName, password: password)
+                    }) {
+                        
+                        
+                        Text("تسجيل الدخول ")
+                            .frame(width: 200, height: 15)
+                            .font(.custom("Ithra-Bold", size: 16))
+                        
+                            .fontWeight(.bold)
+                            .foregroundColor(Color("BackgroundColor"))
+                            .padding()
+                            .background(Color("Color2"))
+                            .cornerRadius(80)
+                            .position(x:190, y: 585)
                         
                         
                     }
-                    Text("ليس لديك حساب مسبقاً؟")
-                        .font(.custom("Poppins", size: 14))
-                        .foregroundColor(Color("Color1"))
                     
-                }  .position(x:190, y: 250)
-                
-                
+                    HStack {
+                        
+                        NavigationLink(destination: signUpScreen()) {
+                            Text("تسجيل جديد ")
+                                .font(.custom("Ithra-light", size: 14))
+                                .foregroundColor(Color("Color2"))
+                                .font(.custom("Poppins", size: 14))
+                                .padding(.trailing, -4)
+                            
+                            
+                        }
+                        
+                        Text("ليس لديك حساب مسبقاً؟")
+                            .font(.custom("Ithra-light", size: 14))
+                            .font(.custom("Poppins", size: 14))
+                            .foregroundColor(Color("Color1"))
+                        
+                    }  .position(x:190, y: 250)
+                    
+                    
+                }
             }
         }
     }
-        
     
     func checkAndLogin(userName:String , password:String){
         if(userName.isEmpty){

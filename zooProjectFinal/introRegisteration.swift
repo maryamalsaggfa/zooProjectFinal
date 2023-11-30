@@ -6,24 +6,24 @@ struct introRegisteration: View {
             ZStack {
                 Color("BackgroundColor").edgesIgnoringSafeArea(.all)
                 
-                VStack(spacing: 10) {
+                VStack(spacing: 0) {
                     
                     Text("واقع الأدغال")
                         .foregroundColor(Color("Color2"))
                         .font(
-                            Font.custom("Poppins", size: 20
-                                       )
+                            Font.custom("Ithra-Bold", size: 20)
                             .weight(.bold)
+                            
                         )
                         .multilineTextAlignment(.center)
                         .frame(alignment: .top)
                     Spacer().frame(height: 21)
                     
-                    Text("عندما يمسك الأسد القطة، تنقلب الموازين! هل يمكن للقطة التفاف خطير على الأسد والهروب بسرعة، أم سيتمكن الأسد من افترس فريسته؟\n")
-                        .font(Font.custom("Poppins", size: 16))
+                    Text("عندما يمسك الأسد القطة، تنقلب الموازين! هل يمكن للقطة التفاف خطير على الأسد والهروب بسرعة، أم سيتمكن الأسد من افترس فريسته؟")
+                        .font(Font.custom("Ithra-Light", size: 16))
                         .multilineTextAlignment(.center)
                         .foregroundColor(Color("Color1"))
-                        .frame(width: 330, height: 80, alignment: .top)
+                        .frame(width:380, alignment: .top)
                     
                 }
                 
@@ -48,6 +48,8 @@ struct introRegisteration: View {
                         NavigationLink(destination: signUpScreen()) {
                             Text("تسجيل")
                                 .frame(width: 200, height: 15)
+                                .font(.custom("Ithra-Bold", size: 16))
+
                                 .fontWeight(.bold)
                                 .foregroundColor(Color("BackgroundColor"))
                                 .padding()
@@ -66,14 +68,14 @@ struct introRegisteration: View {
                             NavigationLink(destination: loginScreen()) {
                                 Text("تسجيل الدخول")
                                     .foregroundColor(Color("Color2"))
-                                    .font(.custom("Poppins", size: 14))
+                                    .font(.custom("Ithra-Light", size: 14))
                                     .padding(.trailing, -4)
                                 
                             
                                 
                             }
                             Text("هل لديك حساب مسبقاً؟")
-                                .font(.custom("Poppins", size: 14))
+                                .font(.custom("Ithra-Light", size: 14))
                             .foregroundColor(Color("Color1"))
                     }
                         .position(x:190, y: 630)
