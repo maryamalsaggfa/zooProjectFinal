@@ -17,7 +17,7 @@ struct zooProjectFinalApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SplashScreen()
+            loginScreen()
         }
     }
 }
@@ -42,5 +42,9 @@ struct invations{
     var senderLionKey:String
     var isAccepted:String
     var accepterCatID:String
+}
+struct currentUserNow{
+    var userNmae:String
+    var password:String
 }
 

@@ -6,12 +6,31 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseDatabase
+class invationViewList:ObservableObject{
+    
+    @Published var invations:[invations]=[]
+    
+    init() {
+            //fetchData()
+        }
+}
 
+func fetchingUserInvations(){
+    
+    
+}
 struct acceptInvation: View {
+    
+    @State var currentUser = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("\(currentUser)")
+        
     }
 }
+
 
 #Preview {
     acceptInvation()

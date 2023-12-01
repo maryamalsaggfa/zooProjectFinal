@@ -9,6 +9,46 @@ import SwiftUI
 import Firebase
 import FirebaseCore
 
+class UserManager: ObservableObject {
+    @Published var currentUser: currentUserNow?
+    let ref = Database.database().reference().child("Players")
+    
+    func login(username: String, password: String) {
+       //print("mmm")
+        ref.child(username).observeSingleEvent(of: .value){
+            [weak self] snapshot,error in
+            guard self != nil else {
+                print("Self is nil.")
+                return
+            }
+            if let error=error{
+                print("\(error)")
+            }
+            
+            guard let strongSelf = self else { return }
+            
+            guard snapshot.exists(), let userData = snapshot.value as? [String: Any], let storedPassword = userData["password"] as? String else {
+                         print("User data not found or password missing.")
+                         return
+                     }
+
+                     if password == storedPassword {
+                         print("Login successful")
+                         let currentUser = currentUserNow(userNmae: username, password: password)
+                         strongSelf.currentUser = currentUser
+                     } else {
+                         print("Incorrect password")
+                     }
+            
+            
+        }
+    }
+        
+        func logout() {
+            currentUser = nil
+        }
+    }
+
 
 struct loginScreen: View {
     @State private var isEditing: Bool = false
@@ -17,10 +57,14 @@ struct loginScreen: View {
     @State private var errorMessageUserName: String?
     @State private var errorMessagePassword: String?
     
+    @State private var isSignUpScreenPresented = false
+    
+    @StateObject private var userManager = UserManager()
+    
 
     
     var body: some View {
-        NavigationView {
+        VStack{
             ZStack{
                 Color("BackgroundColor").edgesIgnoringSafeArea(.all)
                 ZStack {
@@ -31,32 +75,32 @@ struct loginScreen: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 150, height: 150)
+                        .offset(y: -250)
                     
-                } .offset(y: -250)
+                }
+                
                 VStack{
                     Spacer()
-                    
                     
                     Text("تسجيل الدخول ")
                         .foregroundColor(Color("Color2"))
                         .font(.custom("Ithra-Bold", size: 25))
                         .multilineTextAlignment(.center)
                         .frame(alignment: .top)
-                        .padding(.bottom, 500)
-                    
-                    
-                }
-                VStack{
-                    TextField("اسم المستخدم", text: $userName)
+                        .padding(.bottom,0)
+                        
+                    TextField(" اسم المستخدم", text: $userName)
                         .padding()
                         .multilineTextAlignment(.trailing)
                         .padding(.trailing, 20)
-                        .foregroundColor( Color("Color2") )
+                    
+                        .foregroundColor( Color("Color2"))
                         .font(.custom("Ithra-light", size: 14))
                         .background(
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color("Color1"), lineWidth: 2)
                                 .frame(width: 350, height: 40)
+                            
                         )
                     
                     
@@ -68,9 +112,9 @@ struct loginScreen: View {
                     //
                     TextField("كلمة السر ", text: $password)
                         .padding()
-                    
                         .multilineTextAlignment(.trailing)
                         .padding(.trailing, 20)
+                    
                         .foregroundColor( Color("Color2"))
                         .font(.custom("Ithra-light", size: 14))
                         .background(
@@ -89,13 +133,12 @@ struct loginScreen: View {
                     
                     
                 }
+                
                 VStack{
                     Button(action: {
-                        print("تم النقر على الزر!")
+                       
                         checkAndLogin(userName: userName, password: password)
                     }) {
-                        
-                        
                         Text("تسجيل الدخول ")
                             .frame(width: 200, height: 15)
                             .font(.custom("Ithra-Bold", size: 16))
@@ -105,31 +148,41 @@ struct loginScreen: View {
                             .padding()
                             .background(Color("Color2"))
                             .cornerRadius(80)
-                            .position(x:190, y: 585)
-                        
-                        
+         
                     }
-                    
+                    .position(x:190, y: 585)
+    
                     HStack {
-                        
-                        NavigationLink(destination: signUpScreen()) {
+                        Button(action: {
+                            // Present the signUpScreen when the button is clicked
+                            isSignUpScreenPresented=true
+                        }) {
                             Text("تسجيل جديد ")
                                 .font(.custom("Ithra-light", size: 14))
                                 .foregroundColor(Color("Color2"))
                                 .font(.custom("Poppins", size: 14))
                                 .padding(.trailing, -4)
-                            
-                            
+                        }
+                        .fullScreenCover(isPresented: $isSignUpScreenPresented) {
+                            // Your signUpScreen view
+                            signUpScreen()
                         }
                         
                         Text("ليس لديك حساب مسبقاً؟")
                             .font(.custom("Ithra-light", size: 14))
                             .font(.custom("Poppins", size: 14))
                             .foregroundColor(Color("Color1"))
-                        
-                    }  .position(x:190, y: 250)
+                    }
+                    .position(x: 190, y: 250)
                     
                     
+                }
+            }
+            .onReceive(userManager.$currentUser) { currentUser in
+                // Step 5: React to changes, e.g., navigate to another screen
+                if let _ = currentUser {
+                    print("User logged in")
+                    // Navigate to another screen or perform other actions
                 }
             }
         }
@@ -147,25 +200,14 @@ struct loginScreen: View {
             errorMessagePassword=nil
         }
         if errorMessagePassword == nil,errorMessageUserName == nil {
-            loginWithUsername(username: userName, password:password)
+            userManager.login(username:userName, password: password)
+            
             
         }
         
     }
     func loginWithUsername(username: String, password: String) {
-        // Construct the email address from the username
-        let userAuth = "\(username)@example.com"
-        Auth.auth().signIn(withEmail: userAuth, password: password){
-            authResult,error in
-            if let error = error {
-                print("Error signing in: \(error.localizedDescription)")
-                // Handle login error
-            } else {
-                // Successfully signed in
-                errorMessagePassword = "true"
-               
-            }
-        }
+    
     }
 }
  
