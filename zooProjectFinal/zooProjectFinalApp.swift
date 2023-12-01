@@ -17,7 +17,7 @@ struct zooProjectFinalApp: App {
 
     var body: some Scene {
         WindowGroup {
-            loginScreen()
+            LionAR()
         }
     }
 }
