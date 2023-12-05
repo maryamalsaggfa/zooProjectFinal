@@ -54,7 +54,9 @@ struct signUpScreen: View {
     @State private var errorMessageEmail: String?
     @State private var errorMessagePassword: String?
     @State private var errorMessageConfirmPassword: String?
+    @State private var isScreenPresented = false
     @State private var isAccountScreenPresented = false
+
     
     @ObservedObject private var locationManager = LocationManager()
     
@@ -62,7 +64,6 @@ struct signUpScreen: View {
 
     
     var body: some View {
-        NavigationView {
             ZStack{
                 
                 Color("BackgroundColor").edgesIgnoringSafeArea(.all)
@@ -99,14 +100,14 @@ struct signUpScreen: View {
                     .padding()
                     Spacer()
                     Button(action: { isAccountScreenPresented=true
-                      }) {
-                                       Image(systemName: "x.circle")
-                                           .font(.system(size: 25))
-                                           .foregroundColor(Color("Color2"))
-                                    }   .fullScreenCover(isPresented: $isAccountScreenPresented) {
-                                        introRegisteration()
-                                    }
-                                    .position(x:350,y:-140)
+                    }) {
+                        Image(systemName: "x.circle")
+                            .font(.system(size: 25))
+                            .foregroundColor(Color("Color2"))
+                    }   .fullScreenCover(isPresented: $isAccountScreenPresented) {
+                        introRegisteration()
+                    }
+                    .position(x:350,y:-140)
                     Text("تسجيل جديد")
                         .foregroundColor(Color("Color2"))
                         .font(.custom("Ithra-Bold", size: 25))
@@ -222,27 +223,34 @@ struct signUpScreen: View {
                 }
                 HStack {
                     
-                    NavigationLink(destination: loginScreen()) {
-                        Text("تسجيل الدخول")
+                    Button(action: {
+                        isScreenPresented=true
+                    }) {
+                        Text("تسجيل دخول ")
+                            .font(.custom("Ithra-light", size: 14))
                             .foregroundColor(Color("Color2"))
-                            .font(.custom("Ithra-light", size: 14))
+                            .font(.custom("Poppins", size: 14))
                             .padding(.trailing, -4)
-                        
-                        
-                        
-                        
-                        
-                        Text("هل لديك حساب مسبقاً؟")
-                            .font(.custom("Ithra-light", size: 14))
-                            .foregroundColor(Color("Color1"))
-                        
-                    }  .position(x:200, y: 700)
+                    }
+                    .fullScreenCover(isPresented: $isScreenPresented) {
+                        loginScreen()
+                    }
                     
                     
-                }
+                    
+                    
+                    Text("هل لديك حساب مسبقاً؟")
+                        .font(.custom("Ithra-light", size: 14))
+                        .foregroundColor(Color("Color1"))
+                    
+                }  .position(x:200, y: 700)
+                
+                
             }
-        }.navigationBarBackButtonHidden(true)
+        
         }
+        
+        
     func checkAndUploadData(){
         if userName.isEmpty{
             errorMessageUserName = "قم بتعبئة اسم المستخدم !"

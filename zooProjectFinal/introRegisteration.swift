@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct introRegisteration: View {
+    @State private var isScreenPresented = false
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -65,14 +67,17 @@ struct introRegisteration: View {
                     Spacer()
                         HStack {
                             
-                            NavigationLink(destination: loginScreen()) {
-                                Text("تسجيل الدخول")
+                            Button(action: {
+                                isScreenPresented=true
+                            }) {
+                                Text("تسجيل دخول ")
+                                    .font(.custom("Ithra-light", size: 14))
                                     .foregroundColor(Color("Color2"))
-                                    .font(.custom("Ithra-Light", size: 14))
+                                    .font(.custom("Poppins", size: 14))
                                     .padding(.trailing, -4)
-                                
-                            
-                                
+                            }
+                            .fullScreenCover(isPresented: $isScreenPresented) {
+                                loginScreen()
                             }
                             Text("هل لديك حساب مسبقاً؟")
                                 .font(.custom("Ithra-Light", size: 14))

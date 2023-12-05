@@ -57,10 +57,11 @@ struct LetsPlayScreen: View {
                     .frame(width: 250, height:400)
 
                         
-                        Image("frame1")
+                        Image("frame2")
                             .resizable()
-                            .frame(width: 100, height: 100)
+                            .frame(width: 150, height: 150)
                             .offset(x: 0)
+                        .scaleEffect(x: -1, y: 1)
 
 
                         
