@@ -178,7 +178,7 @@ struct loginScreen: View {
                     .position(x: 190, y: 250)
                     .fullScreenCover(isPresented: $isLoggedIn) {
                         // Your signUpScreen view
-                       sendInvation(userName:user)
+                        sendInvation(InvationKey:"", userName:user)
                     }
                     
                     

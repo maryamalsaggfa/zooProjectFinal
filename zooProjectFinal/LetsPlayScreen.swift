@@ -9,9 +9,10 @@ import SwiftUI
 import Firebase
 struct LetsPlayScreen: View {
     
-    var invitionKey = ""
+    @State public var  invitionKey:String
    
     @State private var moveToSecondPage = false
+    
     let ref = Database.database().reference().child("Invations")
     
    
@@ -117,9 +118,7 @@ struct LetsPlayScreen: View {
                     }
                     ProgressView()
                 }
-                .onAppear{
-                    //readInvitionState(invitionKey: invitionKey)
-                }
+               
               //  readInvitionState(invitionKey:invitionKey)
                
             }.fullScreenCover(isPresented: $moveToSecondPage, content: {
@@ -128,7 +127,7 @@ struct LetsPlayScreen: View {
             
             .onAppear {
                           if !moveToSecondPage {
-                             //readInvitionState(invitionKey: invitionKey)
+                             readInvitionState(invitionKey: invitionKey)
                           }
                       }
          
@@ -145,6 +144,10 @@ struct LetsPlayScreen: View {
       
     }
     func readInvitionState(invitionKey:String){
+        guard !invitionKey.isEmpty else {
+               // Handle the empty string case
+               return
+           }
         var isAccepted = "false"
         ref.child(invitionKey).child(isAccepted).observeSingleEvent(of: .value){ snapshot in
             
@@ -167,5 +170,5 @@ struct LetsPlayScreen: View {
 }
 
 #Preview {
-    Let_sPlayScreen()
+    LetsPlayScreen(invitionKey:"")
 }

@@ -15,7 +15,7 @@ struct sendInvation: View {
     
     @State private var isInvationsListsTapped = false
     @State private var isInvationSentTapped = false
-    @State private var InvationKey = ""
+    @State public var InvationKey :String
     
     @State private var errorMessageUserName: String?
     @State private var errorMessage: String?
@@ -107,7 +107,7 @@ struct sendInvation: View {
                     }
                     
                     .fullScreenCover(isPresented: $isInvationSentTapped, content: {
-                      Let_sPlayScreen(invitionKey: InvationKey)
+                      LetsPlayScreen(invitionKey: InvationKey)
                     })
                     
                     Button(action: {
@@ -184,8 +184,9 @@ struct sendInvation: View {
 
 struct sendInvation_Previews: PreviewProvider {
     @State static private var  dummystringUserName = ""
+    @State static private var  dummystringInvition = ""
     static var previews: some View {
-        sendInvation(userName: dummystringUserName)
+        sendInvation(InvationKey: dummystringInvition, userName: dummystringUserName)
     }
 }
 
