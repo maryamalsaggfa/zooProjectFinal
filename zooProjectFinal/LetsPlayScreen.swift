@@ -127,7 +127,10 @@ struct LetsPlayScreen: View {
             
             .onAppear {
                           if !moveToSecondPage {
-                             readInvitionState(invitionKey: invitionKey)
+                              Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
+                                            readInvitionState(invitionKey: invitionKey)
+                                        }
+                             
                           }
                       }
          
