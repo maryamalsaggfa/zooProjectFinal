@@ -9,12 +9,12 @@ import SwiftUI
 import Firebase
 struct LetsPlayScreen: View {
     
-    @State public var  invitionKey:String
+     var  invitionKey:String
    
     @State private var moveToSecondPage = false
     
     let ref = Database.database().reference().child("Invations")
-    
+    ///var onDismiss: () -> Void
    
     
     var body: some View {
@@ -126,12 +126,14 @@ struct LetsPlayScreen: View {
             })
             
             .onAppear {
-                          if !moveToSecondPage {
-                              Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
-                                            readInvitionState(invitionKey: invitionKey)
+       
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
+            print("none \(invitionKey)")
+                readInvitionState(invitionKey: invitionKey)
+                                  
                                         }
                              
-                          }
+                          
                       }
          
            
@@ -147,22 +149,29 @@ struct LetsPlayScreen: View {
       
     }
     func readInvitionState(invitionKey:String){
+        
+        
+        print("test!!!!!!!!!!!!!!!!!!")
         guard !invitionKey.isEmpty else {
                // Handle the empty string case
                return
            }
+        
+        print("the KEY IS \(invitionKey)")
         var isAccepted = "false"
-        ref.child(invitionKey).child(isAccepted).observeSingleEvent(of: .value){ snapshot in
-            
+        ref.child(invitionKey).child("isAccepted").observeSingleEvent(of: .value){ snapshot in
+            print("\(snapshot)")
             if let isAcceptedValue = snapshot.value as? String {
                 
               // isAccepted=isAcceptedValue
                 if isAcceptedValue == "true" {
                     DispatchQueue.main.async {
                         moveToSecondPage = true
+                        print("the value now is TRUE!!! ")
                                    }
                 }else{
                     moveToSecondPage=false
+                    print("the value now is FALSE!!!")
                     
                 }
             }
@@ -172,6 +181,8 @@ struct LetsPlayScreen: View {
     
 }
 
-#Preview {
-    LetsPlayScreen(invitionKey:"")
+struct LetsPlayScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        LetsPlayScreen(invitionKey: "YourDummyInvitationKey")
+    }
 }
