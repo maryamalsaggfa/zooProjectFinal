@@ -45,6 +45,7 @@
 		5CFEE88F2B17296000D3ECAE /* ARcat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFEE88E2B17296000D3ECAE /* ARcat.swift */; };
 		5CFEE8912B17296E00D3ECAE /* sendInvation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFEE8902B17296E00D3ECAE /* sendInvation.swift */; };
 		5CFEE8932B17297C00D3ECAE /* acceptInvation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFEE8922B17297C00D3ECAE /* acceptInvation.swift */; };
+		87B7B9872B1F7E530076F28D /* dog.obj in Resources */ = {isa = PBXBuildFile; fileRef = 87B7B9862B1F7E530076F28D /* dog.obj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		5CFEE88E2B17296000D3ECAE /* ARcat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARcat.swift; sourceTree = "<group>"; };
 		5CFEE8902B17296E00D3ECAE /* sendInvation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sendInvation.swift; sourceTree = "<group>"; };
 		5CFEE8922B17297C00D3ECAE /* acceptInvation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = acceptInvation.swift; sourceTree = "<group>"; };
+		87B7B9862B1F7E530076F28D /* dog.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dog.obj; path = "../../Australian_Cattle_Dog_v1_L3.123c9c6a5764-399b-4e86-9897-6bcb08b5e8ed/dog.obj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				5A871A632B1F5F3700AB483A /* InfoScreen.swift */,
 				5C6D5D5F2B1331D40061AC56 /* GoogleService-Info.plist */,
 				5C6D5D552B1330620061AC56 /* Assets.xcassets */,
+				87B7B9862B1F7E530076F28D /* dog.obj */,
 				5ACF688D2B18D604000CCEE9 /* Ithra-Bold.ttf */,
 				5ACF688C2B18D603000CCEE9 /* Ithra-Light.ttf */,
 				5C6D5D6E2B1338970061AC56 /* permissionScreen.swift */,
@@ -242,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87B7B9872B1F7E530076F28D /* dog.obj in Resources */,
 				5ACF688F2B18D604000CCEE9 /* Ithra-Bold.ttf in Resources */,
 				5ACF688E2B18D604000CCEE9 /* Ithra-Light.ttf in Resources */,
 				5C6D5D592B1330620061AC56 /* Preview Assets.xcassets in Resources */,
