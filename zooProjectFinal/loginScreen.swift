@@ -56,6 +56,8 @@ struct loginScreen: View {
     @State private var password: String = ""
     @State private var errorMessageUserName: String?
     @State private var errorMessagePassword: String?
+    @State public var user=""
+    @State private var isLoggedIn = false
     
     @State private var isSignUpScreenPresented = false
     
@@ -174,6 +176,10 @@ struct loginScreen: View {
                             .foregroundColor(Color("Color1"))
                     }
                     .position(x: 190, y: 250)
+                    .fullScreenCover(isPresented: $isLoggedIn) {
+                        // Your signUpScreen view
+                       sendInvation(userName:user)
+                    }
                     
                     
                 }
@@ -182,6 +188,8 @@ struct loginScreen: View {
                 // Step 5: React to changes, e.g., navigate to another screen
                 if let _ = currentUser {
                     print("User logged in")
+                    user = currentUser?.userNmae ?? ""
+                    isLoggedIn = true
                     // Navigate to another screen or perform other actions
                 }
             }

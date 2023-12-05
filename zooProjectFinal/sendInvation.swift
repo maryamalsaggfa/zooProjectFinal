@@ -14,15 +14,22 @@ struct sendInvation: View {
     @State private var accepterUserName: String = ""
     
     @State private var isInvationsListsTapped = false
+    @State private var isInvationSentTapped = false
+    @State private var InvationKey = ""
     
     @State private var errorMessageUserName: String?
     @State private var errorMessage: String?
+    
+    let userName: String
+    
+    
     
     var ref = Database.database().reference().child("Invations")
     var playersRef = Database.database().reference().child("Players")
 
     var body: some View {
         ZStack {
+            
             Color("BackgroundColor")
                 .edgesIgnoringSafeArea(.all)
             
@@ -39,6 +46,7 @@ struct sendInvation: View {
             .offset(y: -250)
             
             VStack {
+                Text("\(userName)").foregroundColor(Color.red)
                 Text("استعد لبدء المغامرة!                                                                                          قم بدعوة صديقك ليكون جزءًا من التجربة الرائعة.")
                     .font(.custom("Ithra-Light", size: 16))
                     .multilineTextAlignment(.center)
@@ -85,7 +93,6 @@ struct sendInvation: View {
                         )
                     
                     Button(action: {
-                        // send invitation
                         checkAndUpload()
                     }) {
                         Text("أرسل الدعوه ")
@@ -98,6 +105,11 @@ struct sendInvation: View {
                             .cornerRadius(80)
                             .offset(y: 10) // Adjusted the offset
                     }
+                    
+                    .fullScreenCover(isPresented: $isInvationSentTapped, content: {
+                      Let_sPlayScreen(invitionKey: InvationKey)
+                    })
+                    
                     Button(action: {
                         // send invitation
                         isInvationsListsTapped=true
@@ -114,7 +126,7 @@ struct sendInvation: View {
                             .offset(y: 10) // Adjusted the offset
                     }
                     .sheet(isPresented: $isInvationsListsTapped, content: {
-                       acceptInvation(currentUser: currentUser )
+                       acceptInvation(userName: userName)
                     })
                              
                          
@@ -151,6 +163,7 @@ struct sendInvation: View {
         senderQuery.observeSingleEvent(of: .value) { senderSnapshot in
             accepterQuery.observeSingleEvent(of: .value) { accepterSnapshot in
                 if senderSnapshot.exists() && accepterSnapshot.exists() {
+                    isInvationSentTapped=true
                     let invitationKeyString = invation.invationKey.uuidString
                     self.ref.child(invitationKeyString).setValue([
                         "invationKey": invitationKeyString,
@@ -158,6 +171,7 @@ struct sendInvation: View {
                         "accepterCatID": invation.accepterCatID,
                         "isAccepted": invation.isAccepted
                     ])
+                    InvationKey=invitationKeyString
                 } else {
                     // Players with the specified lionKey and catID do not exist
                     print("Players not found. Invitation not uploaded.")
@@ -169,8 +183,9 @@ struct sendInvation: View {
 }
 
 struct sendInvation_Previews: PreviewProvider {
+    @State static private var  dummystringUserName = ""
     static var previews: some View {
-        sendInvation()
+        sendInvation(userName: dummystringUserName)
     }
 }
 

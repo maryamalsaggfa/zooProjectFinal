@@ -114,6 +114,7 @@ struct ARView: UIViewRepresentable {
 
 
 struct contentView: View {
+    
     @StateObject var countdownViewModel = CountdownViewModel()
     @State private var showCounter = true
 
@@ -147,6 +148,9 @@ struct contentView: View {
 }
 
 struct LionAR: View {
+   
+    var invitionsKey:String
+    
     var body: some View {
         ARView()
     }
@@ -154,8 +158,10 @@ struct LionAR: View {
 
 #if DEBUG
 struct ContentView_Previews: PreviewProvider {
+   
+    @State static private var dummystringInvitionKey = ""
     static var previews: some View {
-        LionAR()
+        LionAR(invitionsKey: dummystringInvitionKey)
     }
 }
 #endif

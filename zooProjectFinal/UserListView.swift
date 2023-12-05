@@ -8,9 +8,20 @@
 import SwiftUI
 
 struct UserListView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+    @ObservedObject var viewModel = invationViewList()
+
+   
+        var body: some View {
+            Text("hello world")
+            List(viewModel.userInvationss){ invation in 
+                Text("user Name :\(invation.senderLionKey)")
+                
+                
+            }
+            
+           }
+        
+    
 }
 
 #Preview {

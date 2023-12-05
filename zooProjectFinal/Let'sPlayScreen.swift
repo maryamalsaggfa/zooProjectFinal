@@ -6,15 +6,22 @@
 //
 
 import SwiftUI
-
+import Firebase
 struct Let_sPlayScreen: View {
+    
+    var invitionKey = ""
+   
+    @State private var moveToSecondPage = false
+    let ref = Database.database().reference().child("Invations")
+    
+   
+    
     var body: some View {
+                    // Call the function when the view appear
         ZStack {
             Color("BackgroundColor").edgesIgnoringSafeArea(.all)
-            
-            
             VStack {
-                Text("عيش تجربة الصيد في الأدغال")
+                Text("في انتظار قبول الدعوة")
                     .font(
                         Font.custom("Poppins", size: 20)
                             .weight(.bold)
@@ -108,10 +115,55 @@ struct Let_sPlayScreen: View {
                             .multilineTextAlignment(.trailing)
                         
                     }
+                    ProgressView()
                 }
-                                
-            }    }
+                .onAppear{
+                    //readInvitionState(invitionKey: invitionKey)
+                }
+              //  readInvitionState(invitionKey:invitionKey)
+               
+            }.fullScreenCover(isPresented: $moveToSecondPage, content: {
+                LionAR(invitionsKey: invitionKey)
+            })
+            
+            .onAppear {
+                          if !moveToSecondPage {
+                             //readInvitionState(invitionKey: invitionKey)
+                          }
+                      }
+         
+           
+             
+            
+            
+
+        }
+        
+       
+       
+
+      
     }
+    func readInvitionState(invitionKey:String){
+        var isAccepted = "false"
+        ref.child(invitionKey).child(isAccepted).observeSingleEvent(of: .value){ snapshot in
+            
+            if let isAcceptedValue = snapshot.value as? String {
+                
+              // isAccepted=isAcceptedValue
+                if isAcceptedValue == "true" {
+                    DispatchQueue.main.async {
+                        moveToSecondPage = true
+                                   }
+                }else{
+                    moveToSecondPage=false
+                    
+                }
+            }
+            
+        }
+    }
+    
 }
 
 #Preview {

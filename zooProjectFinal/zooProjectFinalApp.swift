@@ -17,7 +17,7 @@ struct zooProjectFinalApp: App {
 
     var body: some Scene {
         WindowGroup {
-            LionAR()
+            loginScreen()
         }
     }
 }
@@ -37,12 +37,14 @@ struct Players {
     var longitude:String
     // Add other properties as needed
 }
-struct invations{
-    var invationKey :UUID
-    var senderLionKey:String
-    var isAccepted:String
-    var accepterCatID:String
+struct invations: Identifiable {
+    var id: UUID { invationKey } // Use invationKey as the id
+    var invationKey: UUID
+    var senderLionKey: String
+    var isAccepted: String
+    var accepterCatID: String
 }
+
 struct currentUserNow{
     var userNmae:String
     var password:String
