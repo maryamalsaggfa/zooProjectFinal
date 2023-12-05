@@ -24,7 +24,7 @@ struct LetsPlayScreen: View {
             VStack {
                 Text("في انتظار قبول الدعوة")
                     .font(
-                        Font.custom("Poppins", size: 20)
+                        Font.custom("Ithra", size: 20)
                             .weight(.bold)
                     )
                     .multilineTextAlignment(.center)
@@ -111,7 +111,7 @@ struct LetsPlayScreen: View {
                         Text(" أنت ")
                             .offset(x: 5)
                             .padding(.top, -60)
-                            .font(Font.custom("Inter", size: 20))
+                            .font(Font.custom("Ithra", size: 20))
                             .foregroundColor(Color("Color2"))
                             .multilineTextAlignment(.trailing)
                         

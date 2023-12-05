@@ -54,6 +54,7 @@ struct signUpScreen: View {
     @State private var errorMessageEmail: String?
     @State private var errorMessagePassword: String?
     @State private var errorMessageConfirmPassword: String?
+    @State private var isAccountScreenPresented = false
     
     @ObservedObject private var locationManager = LocationManager()
     
@@ -61,175 +62,186 @@ struct signUpScreen: View {
 
     
     var body: some View {
-        ZStack{
-        
-        Color("BackgroundColor").edgesIgnoringSafeArea(.all)
-            ZStack {
-                Circle()
-                    .foregroundColor(Color("Color5"))
-                    .blur(radius: 100)
-                Image("logo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 150, height: 150)
-                    
-            }.offset(y: -250)
-            VStack{
-            
-                if let location = locationManager.currentLocation {
-                    Text("Latitude: \(location.coordinate.latitude)")
-                        .foregroundColor(Color(.red))
-                        .padding(.top,100)
-                          Text("Longitude: \(location.coordinate.longitude)")
-                        .foregroundColor(Color(.red))
-                      } else {
-                          Text("Waiting for location...")
-                      }
-
-                      Button("Start Location Updates") {
-                          locationManager.startLocationUpdates()
-                      }
-                      .padding()
-
-                      Button("Stop Location Updates") {
-                          locationManager.stopLocationUpdates()
-                      }
-                      .padding()
-                Spacer()
-            
-                Text("تسجيل جديد")
-                    .foregroundColor(Color("Color2"))
-                    .font(.custom("Ithra-Bold", size: 25))
-                    .multilineTextAlignment(.center)
-                    .frame(alignment: .top)
-                    .padding(.bottom, 10)
-                VStack{
-                   
-                    TextField("اسم المستخدم", text: $userName)
-                        .padding()
-                        .multilineTextAlignment(.trailing)
-                        .padding(.trailing, 20)
-                        .foregroundColor( Color("Color2"))
-                        .font(.custom("Ithra-light", size: 14))
-
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color("Color1"), lineWidth: 2)
-                                        .frame(width: 350, height: 40)
-                                    
-                                )
-                    
-                                
-                    
-                    //error message place
-                    Text(errorMessageUserName ?? "")
-                                  .foregroundColor(.red)
-                                  .font(.custom("Ithra-light", size: 14))
-
-                    //
-                    TextField("الايميل", text: $email)
-                        .padding()
-                        .multilineTextAlignment(.trailing)
-                        .padding(.trailing, 20)
-                        .foregroundColor( Color("Color2"))
-                        .font(.custom("Ithra-light", size: 14))
-
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color("Color1"), lineWidth: 2)
-                                        .frame(width: 350, height: 40)
-                                )
-                    
-                            
-                    //error message place
-                    Text(errorMessageEmail ?? "")
-                                  .foregroundColor(.red)
-                                  .font(.custom("Ithra-light", size: 14))
-
-                    //
-                    
-                    TextField("كلمة السر ", text: $password)
-                        .padding()
-                        .multilineTextAlignment(.trailing)
-                        .padding(.trailing, 20)
-                        .foregroundColor( Color("Color2"))
-                        .font(.custom("Ithra-light", size: 14))
-
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color("Color1"), lineWidth: 2)
-                                        .frame(width: 350, height: 40)
-                                )
-                    
-                               
-                    Text(errorMessagePassword ?? "")
-                                  .foregroundColor(.red)
-                                  .font(.custom("Ithra-light", size: 14))
-
-                    //
-                    TextField("تأكيد كلمة السر ", text: $confirmPassword)
-                        .padding()
-                        .multilineTextAlignment(.trailing)
-                        .padding(.trailing, 20)
-                        .foregroundColor( Color("Color2") )
-                        .font(.custom("Ithra-light", size: 14))
-
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color("Color1"), lineWidth: 2)
-                                        .frame(width: 350, height: 40)
-                                )
-                    
-                             
-                    Text(errorMessageConfirmPassword ?? "")
-                                  .foregroundColor(.red)
-                                  .font(.custom("Ithra-light", size: 14))
-
-                                  .padding(.bottom,5)
-                    //
-                    
-                }
+        NavigationView {
+            ZStack{
                 
-                Button(action: {
-                   checkAndUploadData()
-
-                }) {
-                    NavigationLink(destination: loginScreen()) {
-                        Text("تسجيل")
-                            .frame(width: 200, height: 15)
-                            .font(.custom("Ithra-light", size: 16))
-
-                            .fontWeight(.bold)
-                            .foregroundColor(Color("BackgroundColor"))
+                Color("BackgroundColor").edgesIgnoringSafeArea(.all)
+                ZStack {
+                    Circle()
+                        .foregroundColor(Color("Color5"))
+                        .blur(radius: 100)
+                    Image("logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 150, height: 150)
+                    
+                }.offset(y: -250)
+                VStack{
+                    
+                    if let location = locationManager.currentLocation {
+                        Text("Latitude: \(location.coordinate.latitude)")
+                            .foregroundColor(Color(.red))
+                            .padding(.top,100)
+                        Text("Longitude: \(location.coordinate.longitude)")
+                            .foregroundColor(Color(.red))
+                    } else {
+                        Text("Waiting for location...")
+                    }
+                    
+                    Button("Start Location Updates") {
+                        locationManager.startLocationUpdates()
+                    }
+                    .padding()
+                    
+                    Button("Stop Location Updates") {
+                        locationManager.stopLocationUpdates()
+                    }
+                    .padding()
+                    Spacer()
+                    Button(action: { isAccountScreenPresented=true
+                      }) {
+                                       Image(systemName: "x.circle")
+                                           .font(.system(size: 25))
+                                           .foregroundColor(Color("Color2"))
+                                    }   .fullScreenCover(isPresented: $isAccountScreenPresented) {
+                                        introRegisteration()
+                                    }
+                                    .position(x:350,y:-140)
+                    Text("تسجيل جديد")
+                        .foregroundColor(Color("Color2"))
+                        .font(.custom("Ithra-Bold", size: 25))
+                        .multilineTextAlignment(.center)
+                        .frame(alignment: .top)
+                        .padding(.bottom, 10)
+                    VStack{
+                        
+                        TextField("اسم المستخدم", text: $userName)
                             .padding()
-                            .background(Color("Color2"))
-                            .cornerRadius(80)
+                            .multilineTextAlignment(.trailing)
+                            .padding(.trailing, 20)
+                            .foregroundColor( Color("Color2"))
+                            .font(.custom("Ithra-light", size: 14))
+                        
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color("Color1"), lineWidth: 2)
+                                    .frame(width: 350, height: 40)
+                                
+                            )
+                        
+                        
+                        
+                        //error message place
+                        Text(errorMessageUserName ?? "")
+                            .foregroundColor(.red)
+                            .font(.custom("Ithra-light", size: 14))
+                        
+                        //
+                        TextField("الايميل", text: $email)
+                            .padding()
+                            .multilineTextAlignment(.trailing)
+                            .padding(.trailing, 20)
+                            .foregroundColor( Color("Color2"))
+                            .font(.custom("Ithra-light", size: 14))
+                        
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color("Color1"), lineWidth: 2)
+                                    .frame(width: 350, height: 40)
+                            )
+                        
+                        
+                        //error message place
+                        Text(errorMessageEmail ?? "")
+                            .foregroundColor(.red)
+                            .font(.custom("Ithra-light", size: 14))
+                        
+                        //
+                        
+                        TextField("كلمة السر ", text: $password)
+                            .padding()
+                            .multilineTextAlignment(.trailing)
+                            .padding(.trailing, 20)
+                            .foregroundColor( Color("Color2"))
+                            .font(.custom("Ithra-light", size: 14))
+                        
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color("Color1"), lineWidth: 2)
+                                    .frame(width: 350, height: 40)
+                            )
+                        
+                        
+                        Text(errorMessagePassword ?? "")
+                            .foregroundColor(.red)
+                            .font(.custom("Ithra-light", size: 14))
+                        
+                        //
+                        TextField("تأكيد كلمة السر ", text: $confirmPassword)
+                            .padding()
+                            .multilineTextAlignment(.trailing)
+                            .padding(.trailing, 20)
+                            .foregroundColor( Color("Color2") )
+                            .font(.custom("Ithra-light", size: 14))
+                        
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color("Color1"), lineWidth: 2)
+                                    .frame(width: 350, height: 40)
+                            )
+                        
+                        
+                        Text(errorMessageConfirmPassword ?? "")
+                            .foregroundColor(.red)
+                            .font(.custom("Ithra-light", size: 14))
+                        
+                            .padding(.bottom,5)
+                        //
                         
                     }
-                }
-                .padding(.bottom, 150)
-     
-            }
-            HStack {
-                
-                NavigationLink(destination: loginScreen()) {
-                    Text("تسجيل الدخول")
-                        .foregroundColor(Color("Color2"))
-                        .font(.custom("Ithra-light", size: 14))
-                        .padding(.trailing, -4)
-                
+                    
+                    Button(action: {
+                        checkAndUploadData()
+                        
+                    }) {
+                        NavigationLink(destination: loginScreen()) {
+                            Text("تسجيل")
+                                .frame(width: 200, height: 15)
+                                .font(.custom("Ithra-light", size: 16))
+                            
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("BackgroundColor"))
+                                .padding()
+                                .background(Color("Color2"))
+                                .cornerRadius(80)
+                            
+                        }
+                    }
+                    .padding(.bottom, 150)
                     
                 }
-                Text("هل لديك حساب مسبقاً؟")
-                    .font(.custom("Ithra-light", size: 14))
-                .foregroundColor(Color("Color1"))
-                
-            }  .position(x:200, y: 700)
-
-           
-        
-    }
-       
+                HStack {
+                    
+                    NavigationLink(destination: loginScreen()) {
+                        Text("تسجيل الدخول")
+                            .foregroundColor(Color("Color2"))
+                            .font(.custom("Ithra-light", size: 14))
+                            .padding(.trailing, -4)
+                        
+                        
+                        
+                        
+                        
+                        Text("هل لديك حساب مسبقاً؟")
+                            .font(.custom("Ithra-light", size: 14))
+                            .foregroundColor(Color("Color1"))
+                        
+                    }  .position(x:200, y: 700)
+                    
+                    
+                }
+            }
+        }.navigationBarBackButtonHidden(true)
         }
     func checkAndUploadData(){
         if userName.isEmpty{

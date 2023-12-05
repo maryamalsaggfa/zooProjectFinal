@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A871A642B1F5F3700AB483A /* InfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A871A632B1F5F3700AB483A /* InfoScreen.swift */; };
+		5A871A662B1F5F8F00AB483A /* AccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A871A652B1F5F8F00AB483A /* AccountScreen.swift */; };
 		5ACF688E2B18D604000CCEE9 /* Ithra-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ACF688C2B18D603000CCEE9 /* Ithra-Light.ttf */; };
 		5ACF688F2B18D604000CCEE9 /* Ithra-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ACF688D2B18D604000CCEE9 /* Ithra-Bold.ttf */; };
 		5C2E02B92B1DC5B800B48204 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E02B82B1DC5B800B48204 /* UserListView.swift */; };
 		5C6D5D522B1330610061AC56 /* zooProjectFinalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D5D512B1330610061AC56 /* zooProjectFinalApp.swift */; };
-		5C6D5D542B1330610061AC56 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D5D532B1330610061AC56 /* ContentView.swift */; };
 		5C6D5D562B1330620061AC56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C6D5D552B1330620061AC56 /* Assets.xcassets */; };
 		5C6D5D592B1330620061AC56 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C6D5D582B1330620061AC56 /* Preview Assets.xcassets */; };
 		5C6D5D602B1331D40061AC56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C6D5D5F2B1331D40061AC56 /* GoogleService-Info.plist */; };
@@ -47,12 +48,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A871A632B1F5F3700AB483A /* InfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoScreen.swift; sourceTree = "<group>"; };
+		5A871A652B1F5F8F00AB483A /* AccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountScreen.swift; sourceTree = "<group>"; };
 		5ACF688C2B18D603000CCEE9 /* Ithra-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ithra-Light.ttf"; sourceTree = "<group>"; };
 		5ACF688D2B18D604000CCEE9 /* Ithra-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ithra-Bold.ttf"; sourceTree = "<group>"; };
 		5C2E02B82B1DC5B800B48204 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		5C6D5D4E2B1330610061AC56 /* zooProjectFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zooProjectFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C6D5D512B1330610061AC56 /* zooProjectFinalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zooProjectFinalApp.swift; sourceTree = "<group>"; };
-		5C6D5D532B1330610061AC56 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5C6D5D552B1330620061AC56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C6D5D582B1330620061AC56 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5C6D5D5F2B1331D40061AC56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -130,12 +132,13 @@
 				5CFEE8922B17297C00D3ECAE /* acceptInvation.swift */,
 				5CFEE88C2B17294D00D3ECAE /* LionAR.swift */,
 				5CFEE88E2B17296000D3ECAE /* ARcat.swift */,
-				5C6D5D6E2B1338970061AC56 /* permissionScreen.swift */,
-				5C6D5D532B1330610061AC56 /* ContentView.swift */,
+				5A871A652B1F5F8F00AB483A /* AccountScreen.swift */,
+				5A871A632B1F5F3700AB483A /* InfoScreen.swift */,
 				5C6D5D5F2B1331D40061AC56 /* GoogleService-Info.plist */,
 				5C6D5D552B1330620061AC56 /* Assets.xcassets */,
 				5ACF688D2B18D604000CCEE9 /* Ithra-Bold.ttf */,
 				5ACF688C2B18D603000CCEE9 /* Ithra-Light.ttf */,
+				5C6D5D6E2B1338970061AC56 /* permissionScreen.swift */,
 				5C6D5D572B1330620061AC56 /* Preview Content */,
 				5C2E02B82B1DC5B800B48204 /* UserListView.swift */,
 			);
@@ -256,7 +259,7 @@
 			files = (
 				5C6D5D6D2B13370F0061AC56 /* splashScreen.swift in Sources */,
 				5C6D5D712B1338C00061AC56 /* introRegisteration.swift in Sources */,
-				5C6D5D542B1330610061AC56 /* ContentView.swift in Sources */,
+				5A871A662B1F5F8F00AB483A /* AccountScreen.swift in Sources */,
 				5CFEE88F2B17296000D3ECAE /* ARcat.swift in Sources */,
 				5C6D5D6F2B1338970061AC56 /* permissionScreen.swift in Sources */,
 				5C6D5D522B1330610061AC56 /* zooProjectFinalApp.swift in Sources */,
@@ -267,6 +270,7 @@
 				5C6D5D732B1338DA0061AC56 /* signUpScreen.swift in Sources */,
 				5C6D5D752B1338E80061AC56 /* loginScreen.swift in Sources */,
 				5C2E02B92B1DC5B800B48204 /* UserListView.swift in Sources */,
+				5A871A642B1F5F3700AB483A /* InfoScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,7 +404,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"zooProjectFinal/Preview Content\"";
-				DEVELOPMENT_TEAM = KHXQ555L4S;
+				DEVELOPMENT_TEAM = 25ANLCX5P6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = zooProjectFinal/Info.plist;
@@ -434,7 +438,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"zooProjectFinal/Preview Content\"";
-				DEVELOPMENT_TEAM = KHXQ555L4S;
+				DEVELOPMENT_TEAM = 25ANLCX5P6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = zooProjectFinal/Info.plist;

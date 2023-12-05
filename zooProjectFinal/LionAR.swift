@@ -127,7 +127,8 @@ struct contentView: View {
                 if showCounter {
                     VStack {
                         Text("استعد سوف تبدأ اللعبه خلال :")
-                            .font(.system(size: 20, weight: .bold))
+                            .font(.custom("Ithra-Bold", size: 20))
+
                             .padding()
                             .foregroundColor(.black)
 

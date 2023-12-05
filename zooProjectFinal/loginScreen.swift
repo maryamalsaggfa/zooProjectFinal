@@ -60,8 +60,10 @@ struct loginScreen: View {
     @State private var isLoggedIn = false
     
     @State private var isSignUpScreenPresented = false
+    @State private var isAccountScreenPresented = false
     
     @StateObject private var userManager = UserManager()
+    
     
 
     
@@ -81,15 +83,25 @@ struct loginScreen: View {
                     
                 }
                 
+                Button(action: { isAccountScreenPresented=true
+                  }) {
+                                   Image(systemName: "x.circle")
+                                       .font(.system(size: 25))
+                                       .foregroundColor(Color("Color2"))
+                                }   .fullScreenCover(isPresented: $isAccountScreenPresented) {
+                                    introRegisteration()
+                                }
+                                .position(x:350,y:30)
+                Text("تسجيل الدخول ")
+                    .foregroundColor(Color("Color2"))
+                    .font(.custom("Ithra-Bold", size: 25))
+                    .multilineTextAlignment(.center)
+                    .frame(alignment: .top)
+                    .offset(y : -150)
+                
                 VStack{
-                    Spacer()
                     
-                    Text("تسجيل الدخول ")
-                        .foregroundColor(Color("Color2"))
-                        .font(.custom("Ithra-Bold", size: 25))
-                        .multilineTextAlignment(.center)
-                        .frame(alignment: .top)
-                        .padding(.bottom,0)
+                    
                         
                     TextField(" اسم المستخدم", text: $userName)
                         .padding()
@@ -134,7 +146,7 @@ struct loginScreen: View {
                     //
                     
                     
-                }
+                }.offset(y : 20)
                 
                 VStack{
                     Button(action: {
@@ -183,7 +195,7 @@ struct loginScreen: View {
                     
                     
                 }
-            }
+            }.navigationBarBackButtonHidden(true)
             .onReceive(userManager.$currentUser) { currentUser in
                 // Step 5: React to changes, e.g., navigate to another screen
                 if let _ = currentUser {

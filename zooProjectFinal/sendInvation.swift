@@ -28,6 +28,8 @@ struct sendInvation: View {
     @State private var errorMessage: String?
 
     @StateObject private var coordinator = InvitationsCoordinator()
+    @State private var isAccountScreenPresented = false
+
 
     let userName: String
 
@@ -38,7 +40,16 @@ struct sendInvation: View {
         ZStack {
             Color("BackgroundColor")
                 .edgesIgnoringSafeArea(.all)
-
+            Button(action: { isAccountScreenPresented=true
+              }) {
+                               Image(systemName: "gearshape.fill")
+                                   .font(.system(size: 25))
+                                   .foregroundColor(Color("Color2"))
+                                   .position(x: 350, y:10)
+                            }   .fullScreenCover(isPresented: $isAccountScreenPresented) {
+                                // Your signUpScreen view
+                                AccountScreen()
+                            }
             ZStack {
                 Circle()
                     .foregroundColor(Color("Color5"))
