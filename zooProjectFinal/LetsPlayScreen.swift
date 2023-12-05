@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Firebase
-struct Let_sPlayScreen: View {
+struct LetsPlayScreen: View {
     
     var invitionKey = ""
    
