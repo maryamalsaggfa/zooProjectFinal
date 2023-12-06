@@ -17,7 +17,10 @@ struct zooProjectFinalApp: App {
 
     var body: some Scene {
         WindowGroup {
-        introRegisteration()
+            AccountScreen()
+                .onAppear {
+                    AudioPlayer.shared.playMusic()
+                }
         }
     }
 }

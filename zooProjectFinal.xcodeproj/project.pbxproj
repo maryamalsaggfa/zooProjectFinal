@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A4B37FD2B20953D00611158 /* MM.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5A4B37FC2B20953D00611158 /* MM.mp3 */; };
+		5A4B37FF2B20958100611158 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4B37FE2B20958100611158 /* AudioPlayer.swift */; };
 		5A871A642B1F5F3700AB483A /* InfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A871A632B1F5F3700AB483A /* InfoScreen.swift */; };
 		5A871A662B1F5F8F00AB483A /* AccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A871A652B1F5F8F00AB483A /* AccountScreen.swift */; };
 		5ACF688E2B18D604000CCEE9 /* Ithra-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ACF688C2B18D603000CCEE9 /* Ithra-Light.ttf */; };
@@ -45,10 +47,11 @@
 		5CFEE88F2B17296000D3ECAE /* ARcat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFEE88E2B17296000D3ECAE /* ARcat.swift */; };
 		5CFEE8912B17296E00D3ECAE /* sendInvation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFEE8902B17296E00D3ECAE /* sendInvation.swift */; };
 		5CFEE8932B17297C00D3ECAE /* acceptInvation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFEE8922B17297C00D3ECAE /* acceptInvation.swift */; };
-		87B7B9872B1F7E530076F28D /* dog.obj in Resources */ = {isa = PBXBuildFile; fileRef = 87B7B9862B1F7E530076F28D /* dog.obj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A4B37FC2B20953D00611158 /* MM.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MM.mp3; sourceTree = "<group>"; };
+		5A4B37FE2B20958100611158 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		5A871A632B1F5F3700AB483A /* InfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoScreen.swift; sourceTree = "<group>"; };
 		5A871A652B1F5F8F00AB483A /* AccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountScreen.swift; sourceTree = "<group>"; };
 		5ACF688C2B18D603000CCEE9 /* Ithra-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ithra-Light.ttf"; sourceTree = "<group>"; };
@@ -70,7 +73,6 @@
 		5CFEE88E2B17296000D3ECAE /* ARcat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARcat.swift; sourceTree = "<group>"; };
 		5CFEE8902B17296E00D3ECAE /* sendInvation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sendInvation.swift; sourceTree = "<group>"; };
 		5CFEE8922B17297C00D3ECAE /* acceptInvation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = acceptInvation.swift; sourceTree = "<group>"; };
-		87B7B9862B1F7E530076F28D /* dog.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dog.obj; path = "../../Australian_Cattle_Dog_v1_L3.123c9c6a5764-399b-4e86-9897-6bcb08b5e8ed/dog.obj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A4B37FB2B20953D00611158 /* mm */ = {
+			isa = PBXGroup;
+			children = (
+				5A4B37FC2B20953D00611158 /* MM.mp3 */,
+			);
+			path = mm;
+			sourceTree = "<group>";
+		};
 		5C6D5D452B1330610061AC56 = {
 			isa = PBXGroup;
 			children = (
@@ -136,9 +146,10 @@
 				5CFEE88E2B17296000D3ECAE /* ARcat.swift */,
 				5A871A652B1F5F8F00AB483A /* AccountScreen.swift */,
 				5A871A632B1F5F3700AB483A /* InfoScreen.swift */,
+				5A4B37FE2B20958100611158 /* AudioPlayer.swift */,
+				5A4B37FB2B20953D00611158 /* mm */,
 				5C6D5D5F2B1331D40061AC56 /* GoogleService-Info.plist */,
 				5C6D5D552B1330620061AC56 /* Assets.xcassets */,
-				87B7B9862B1F7E530076F28D /* dog.obj */,
 				5ACF688D2B18D604000CCEE9 /* Ithra-Bold.ttf */,
 				5ACF688C2B18D603000CCEE9 /* Ithra-Light.ttf */,
 				5C6D5D6E2B1338970061AC56 /* permissionScreen.swift */,
@@ -245,11 +256,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87B7B9872B1F7E530076F28D /* dog.obj in Resources */,
 				5ACF688F2B18D604000CCEE9 /* Ithra-Bold.ttf in Resources */,
 				5ACF688E2B18D604000CCEE9 /* Ithra-Light.ttf in Resources */,
 				5C6D5D592B1330620061AC56 /* Preview Assets.xcassets in Resources */,
 				5C6D5D562B1330620061AC56 /* Assets.xcassets in Resources */,
+				5A4B37FD2B20953D00611158 /* MM.mp3 in Resources */,
 				5C6D5D602B1331D40061AC56 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,6 +274,7 @@
 			files = (
 				5C6D5D6D2B13370F0061AC56 /* splashScreen.swift in Sources */,
 				5C6D5D712B1338C00061AC56 /* introRegisteration.swift in Sources */,
+				5A4B37FF2B20958100611158 /* AudioPlayer.swift in Sources */,
 				5A871A662B1F5F8F00AB483A /* AccountScreen.swift in Sources */,
 				5CFEE88F2B17296000D3ECAE /* ARcat.swift in Sources */,
 				5C6D5D6F2B1338970061AC56 /* permissionScreen.swift in Sources */,
@@ -408,7 +420,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"zooProjectFinal/Preview Content\"";
-				DEVELOPMENT_TEAM = C7FP5Y73GC;
+				DEVELOPMENT_TEAM = 25ANLCX5P6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = zooProjectFinal/Info.plist;
@@ -442,7 +454,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"zooProjectFinal/Preview Content\"";
-				DEVELOPMENT_TEAM = C7FP5Y73GC;
+				DEVELOPMENT_TEAM = 25ANLCX5P6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = zooProjectFinal/Info.plist;

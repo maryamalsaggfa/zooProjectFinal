@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct InfoScreen: View {
-    
+@State private var isScreenPresented = false
+
     var body: some View {
         ZStack{
             Color("BackgroundColor")
@@ -62,9 +63,7 @@ struct InfoScreen: View {
                 
                 
             }.offset(y:100)
-            Button(action: {
-                // هنا يمكنك وضع الإجراء الذي تريده عند الضغط على الزر
-                // مثلاً، الانتقال إلى صفحة sendInvation
+            Button(action: {isScreenPresented = true
             }) {
                 
                     Text("العب مرة أخرى")
@@ -74,8 +73,13 @@ struct InfoScreen: View {
                         .frame(width: 200, height: 50)
                         .background(Color("Color2"))
                         .cornerRadius(80)
-                        .offset(y:300)
-            }
+            }  .offset(y:300)
+            //هنا مفروض يكون يقدر يرجع يررسل دعوه
+                .fullScreenCover(isPresented: $isScreenPresented) {
+                    introRegisteration()
+                    //
+                }
+
 
             }
 

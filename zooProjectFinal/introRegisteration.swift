@@ -18,11 +18,14 @@ struct introRegisteration: View {
                             .weight(.bold)
                             
                         )
+                        .offset(y: -20)
                         .multilineTextAlignment(.center)
                         .frame(alignment: .top)
                     Spacer().frame(height: 21)
+                        .offset(y: 10)
                     
-                    Text("عندما يمسك الأسد القطة، تنقلب الموازين! هل يمكن للقطة التفاف خطير على الأسد والهروب بسرعة، أم سيتمكن الأسد من افترس فريسته؟")
+                    Text("تأخذك هذه اللعبة في رحلة مثيرة إلى عالم مليء بالتوتر والإثارة.\n في كل جولة، ستجد نفسك في دور الفريسة أو المفترس، حيث تتبادل الأدوار بين الطرفين بين البحث الحماسي عن الفريسة والاختباء الذكي لتفادي المفترس. ")
+                        .offset(y: -20)
                         .font(Font.custom("Ithra-Light", size: 16))
                         .multilineTextAlignment(.center)
                         .foregroundColor(Color("Color1"))

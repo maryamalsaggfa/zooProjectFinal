@@ -9,22 +9,41 @@ import SwiftUI
 
 struct AccountScreen: View {
     @State private var isAccountScreenPresented = false
+    @State private var isMuted = false
+    let audioPlayer = AudioPlayer.shared
+    
     var body: some View{
         ZStack{
             Color("BackgroundColor")
                 .ignoresSafeArea(.all)
+            
+            
+            Image(systemName: isMuted ? "speaker.slash.fill" : "speaker.wave.2.fill")
+                .onTapGesture {
+                    isMuted.toggle()
+                    audioPlayer.toggleMute(isMuted: isMuted)
+                }
+                .font(.system(size: 25))
+                .foregroundColor(Color("Color2"))
+                .offset(x: 150)
+                .offset(y: -360)
+            
+            
+            
+            
             
                 HStack{
                     Button(action: { isAccountScreenPresented=true
                       }) {
                                        Image(systemName: "chevron.backward")
                                            .font(.system(size: 25))
-                                           .foregroundColor(Color("Color2"))
-                                    }   .fullScreenCover(isPresented: $isAccountScreenPresented) 
+
+                                 .foregroundColor(Color("Color2"))
+                                    }   .fullScreenCover(isPresented: $isAccountScreenPresented)
                     {
                                         introRegisteration()// هنا مشكلة ما اقدر احط اسم الصفحه 
-                                    }
-                                    .offset(x: -90)
+                                    }                              .offset(x:-120)
+
                     
 
                 
@@ -34,10 +53,11 @@ struct AccountScreen: View {
                     )
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color("Color2"))
-                    Image(systemName: "speaker.wave.3")
-                        .font(.system(size: 25))
-                        .foregroundColor(Color("Color2"))
-                        .offset(x: 85)
+                    .offset(x: 0)
+
+                   
+                    
+                 
             }
                 .offset(y: -360)
 

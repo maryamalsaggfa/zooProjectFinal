@@ -57,6 +57,7 @@ struct signUpScreen: View {
     @State private var isScreenPresented = false
     @State private var isAccountScreenPresented = false
     @State private var isAccountScreenRegiterd = false
+    
 
     
     @ObservedObject private var locationManager = LocationManager()
@@ -97,8 +98,8 @@ struct signUpScreen: View {
                         .font(.custom("Ithra-Bold", size: 25))
                         .multilineTextAlignment(.center)
                         .frame(alignment: .top)
-                        .padding(.bottom, 10)
-                    VStack{
+                        .offset(y:-150)
+                                 VStack(spacing: 0){
                         
                         TextField("اسم المستخدم", text: $userName)
                             .padding()
@@ -119,7 +120,7 @@ struct signUpScreen: View {
                         //error message place
                         Text(errorMessageUserName ?? "")
                             .foregroundColor(.red)
-                            .font(.custom("Ithra-light", size: 14))
+                            .font(.custom("Ithra-light", size: 10))
                         
                         //
                         TextField("الايميل", text: $email)
@@ -139,7 +140,7 @@ struct signUpScreen: View {
                         //error message place
                         Text(errorMessageEmail ?? "")
                             .foregroundColor(.red)
-                            .font(.custom("Ithra-light", size: 14))
+                            .font(.custom("Ithra-light", size: 10))
                         
                         //
                         
@@ -159,7 +160,7 @@ struct signUpScreen: View {
                         
                         Text(errorMessagePassword ?? "")
                             .foregroundColor(.red)
-                            .font(.custom("Ithra-light", size: 14))
+                            .font(.custom("Ithra-light", size: 10))
                         
                         //
                         TextField("تأكيد كلمة السر ", text: $confirmPassword)
@@ -178,12 +179,11 @@ struct signUpScreen: View {
                         
                         Text(errorMessageConfirmPassword ?? "")
                             .foregroundColor(.red)
-                            .font(.custom("Ithra-light", size: 14))
+                            .font(.custom("Ithra-light", size: 10))
                         
-                            .padding(.bottom,5)
                         //
                         
-                    }
+                    }.offset(y:-140)
                     
                     Button(action: {
                         checkAndUploadData()
@@ -199,10 +199,8 @@ struct signUpScreen: View {
                                 .padding()
                                 .background(Color("Color2"))
                                 .cornerRadius(80)
-                            
-                        }
-                    }
-                    .padding(.bottom, 150)
+                                    }
+                    }.offset(y :-100)
                     
                 }
                 HStack {
@@ -227,7 +225,7 @@ struct signUpScreen: View {
                         .font(.custom("Ithra-light", size: 14))
                         .foregroundColor(Color("Color1"))
                     
-                }  .position(x:200, y: 700)
+                } .offset(y :300)
                 
                 
             }

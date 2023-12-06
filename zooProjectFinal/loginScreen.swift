@@ -99,7 +99,9 @@ struct loginScreen: View {
                     .frame(alignment: .top)
                     .offset(y : -150)
                 
-                VStack{
+                VStack (spacing: 0) {
+                    
+              
                     
                     
                         
@@ -121,7 +123,7 @@ struct loginScreen: View {
                     //error message place
                     Text(errorMessageUserName ?? "")
                         .foregroundColor(.red)
-                        .font(.custom("Ithra-light", size: 14))
+                        .font(.custom("Ithra-light", size: 10))
                     
                     //
                     TextField("كلمة السر ", text: $password)
@@ -141,8 +143,7 @@ struct loginScreen: View {
                     
                     Text(errorMessagePassword ?? "")
                         .foregroundColor(.red)
-                        .font(.custom("Ithra-light", size: 14))
-                        .padding(.bottom,5)
+                        .font(.custom("Ithra-light", size: 10))
                     //
                     
                     
