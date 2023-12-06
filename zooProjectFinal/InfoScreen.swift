@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InfoScreen: View {
 @State private var isScreenPresented = false
-
+    let userName :String
     var body: some View {
         ZStack{
             Color("BackgroundColor")
@@ -29,7 +29,7 @@ struct InfoScreen: View {
             
             
 
-           Text("الفائز هو الاسد !")
+           Text("الفائز هو \(userName)")
                     .font(.custom("Ithra-Bold", size: 20))
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color("Color2"))
@@ -76,7 +76,7 @@ struct InfoScreen: View {
             }  .offset(y:300)
             //هنا مفروض يكون يقدر يرجع يررسل دعوه
                 .fullScreenCover(isPresented: $isScreenPresented) {
-                    introRegisteration()
+                    sendInvation(userName: userName)
                     //
                 }
 
@@ -97,5 +97,5 @@ struct InfoScreen: View {
 
 
 #Preview {
-    InfoScreen()
+    InfoScreen(userName: "")
 }

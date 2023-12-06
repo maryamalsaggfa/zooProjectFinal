@@ -8,7 +8,7 @@ import ARKit
 import CoreLocation
 
 class CountdownViewModel: ObservableObject {
-    @Published var counter = 5
+    @Published var counter = 40
     
     func startCountdown() {
         
@@ -31,7 +31,7 @@ struct ARView: UIViewRepresentable {
         let sceneView = ARSCNView()
         sceneView.showsStatistics = true
         
-        if let scene = SCNScene(named: "dog.obj") {
+       if let scene = SCNScene(named: "dog.obj") {
             // Unwrap the optional scene
             sceneView.scene = scene
             
@@ -85,10 +85,13 @@ struct ARView: UIViewRepresentable {
     
     
     struct contentView: View {
-        
-        @StateObject var countdownViewModel = CountdownViewModel()
+        @ObservedObject var countdownViewModel = CountdownViewModel()
+
         @State private var showCounter = true
-        
+        var invitionsKey:String
+        var userName:String
+        @State private var navigateToNextPage = false // Added state variable for navigation
+
         var body: some View {
             GeometryReader { geometry in
                 ZStack {
@@ -97,16 +100,20 @@ struct ARView: UIViewRepresentable {
                     
                     if showCounter {
                         VStack {
-                            Text("استعد سوف تبدأ اللعبه خلال :")
-                                .font(.custom("Ithra-Bold", size: 20))
+                            Spacer() // Push the counter to the top
+                            Text("اسرع جد القطة قبل صديقك وقبل نفاذ الوقت")
+                                .font(.custom("Ithra-Bold", size: 15))
+                                .foregroundColor(Color("Color2"))
+                            
+                                
                             
                                 .padding()
                                 .foregroundColor(.black)
                             
                             Text("\(countdownViewModel.counter)")
-                                .font(.system(size: 100, weight: .bold))
+                                .font(.system(size: 40, weight: .bold))
                                 .padding()
-                                .foregroundColor(.black)
+                                .foregroundColor(Color("BackgroundColor"))
                         }
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -115,7 +122,16 @@ struct ARView: UIViewRepresentable {
             }
             .onAppear {
                 countdownViewModel.startCountdown()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                                    showCounter = false
+                                    navigateToNextPage = true // Set the flag to navigate after 10 seconds
+                                }
+                
             }
+            .fullScreenCover(isPresented: $navigateToNextPage) {
+                             // Replace YourNextView with the view you want to navigate to
+                InfoScreen(userName: userName)
+                        }
         }
     }
     

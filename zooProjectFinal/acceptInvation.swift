@@ -49,6 +49,7 @@ class invationViewList: ObservableObject {
     }
 }
 
+
 struct acceptInvation: View {
     let refInvtions = Database.database().reference().child("Invations")
     
@@ -69,9 +70,11 @@ struct acceptInvation: View {
     
 
     var body: some View {
-            Color("BackgroundColor").edgesIgnoringSafeArea(.all)
-            List(invationList.userInvationss) { invation in
-                Text("الدعوة من صديقك : \(invation.senderLionKey)")
+        
+        List(invationList.userInvationss){ invation in
+            HStack{
+                Text("الدعوة من صديقك : \(invation.senderLionKey)").foregroundColor(Color("BackgroundColor"))
+                
                 Button(action: {
                     self.selectedInvitation = invation
                     print("clciked")
@@ -83,25 +86,27 @@ struct acceptInvation: View {
                     Text("قبول")
                         .frame(width: 100, height: 15)
                         .font(.custom("Ithra-Bold", size: 16))
-                    
                         .fontWeight(.bold)
-                        .foregroundColor(Color("BackgroundColor"))
+                        .foregroundColor(Color("Color2"))
                         .padding()
-                        .background(Color("Color2"))
+                        .background(Color("BackgroundColor"))
                         .cornerRadius(80)
                     
-                } .fullScreenCover(isPresented: $isAcceptedSucessfully, content: {
+                }
+              
+                            .fullScreenCover(isPresented: $isAcceptedSucessfully, content: {
                     let invationKeyString = selectedInvitation?.invationKey.uuidString
                     
-                    LionAR(invitionsKey: invationKeyString ?? "")
+                    contentView(invitionsKey: invationKeyString ?? "", userName:userName)
                     //send the invition key and the type of user
                 })
                 // Add more Text views for other properties if needed
-            }
+            } //.Color("BackgroundColor").edgesIgnoringSafeArea(.all)
             .onAppear{
                 self.invationList.fetchInvaition(accepterUserName: userName)
             }
         }
+    }
     
     func updateInvitionState(invationKey:String,isApproved: String){
         let updateData = ["isAccepted": isApproved]

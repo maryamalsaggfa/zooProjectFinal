@@ -22,15 +22,25 @@ struct LetsPlayScreen: View {
         ZStack {
             Color("BackgroundColor").edgesIgnoringSafeArea(.all)
             VStack {
-                Text("في انتظار قبول الدعوة")
+                Text("الجولة الأولى :منافسة الاسود ")
                     .font(
-                        Font.custom("Ithra", size: 20)
+                        Font.custom("Ithra", size: 18)
                             .weight(.bold)
                     )
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color("Color2"))
                     .padding(.top, -10)
                     .frame(width: 251, height: 33)
+                
+                Text("تحدى أسد وصديقه إلى سباق مثير لاكتشاف واصطياد القطة")
+                    .frame(width: 350, height: 33)
+                    .foregroundColor(Color("Color2"))
+                    .font(Font.custom("Ithra", size: 13))
+                Text("من يكون أسرع في رؤية والقبض على فريسته، سيكون الفائز")
+                    .frame(width: 350, height: 33)
+                    .foregroundColor(Color("Color2"))
+                    .font(Font.custom("Ithra", size: 13))
+                
                 
                 
                 
@@ -94,7 +104,7 @@ struct LetsPlayScreen: View {
                             .clipShape(Circle())
                             .offset(x: -60)
                             .padding(.top, -80)
-                        Text("Player 1")
+                        Text("صديقك")
                             .offset(x: -60)
                             .padding(.top, -60)
                             .font(Font.custom("Inter", size: 20))
@@ -117,8 +127,15 @@ struct LetsPlayScreen: View {
                             .multilineTextAlignment(.trailing)
                         
                     }
-                    ProgressView()
+                    
+                    
                 }
+                Text("في انتظار قبول الدعوة")
+                    .foregroundColor(Color("Color2"))
+                    .font(Font.custom("Ithra", size: 13))
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: Color("Color2"))) // Set progress color to orange
+                       .frame(width: 100, height: 100)
                
               //  readInvitionState(invitionKey:invitionKey)
                

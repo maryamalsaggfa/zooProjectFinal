@@ -55,9 +55,13 @@ struct signUpScreen: View {
     @State private var errorMessagePassword: String?
     @State private var errorMessageConfirmPassword: String?
     @State private var isScreenPresented = false
+    
     @State private var isAccountScreenPresented = false
+    
     @State private var isAccountScreenRegiterd = false
     
+    @State private var isPasswordVisible = false
+    @State private var isPasswordVisibleConferm = false
 
     
     @ObservedObject private var locationManager = LocationManager()
@@ -66,6 +70,7 @@ struct signUpScreen: View {
 
     
     var body: some View {
+      //  ScrollView {
             ZStack{
                 
                 Color("BackgroundColor").edgesIgnoringSafeArea(.all)
@@ -78,12 +83,12 @@ struct signUpScreen: View {
                         .scaledToFit()
                         .frame(width: 150, height: 150)
                     
-                }.offset(y: -250)
+                }.offset(y: -290)
                 VStack{
                     
-               
                     
-                 
+                    
+                    
                     Button(action: { isAccountScreenPresented=true
                     }) {
                         Image(systemName: "x.circle")
@@ -99,8 +104,9 @@ struct signUpScreen: View {
                         .multilineTextAlignment(.center)
                         .frame(alignment: .top)
                         .offset(y:-150)
-                                 VStack(spacing: 0){
-                        
+                    
+                    VStack(spacing: 0){
+                        Text("اسم المستخدم").foregroundColor( Color("Color1")) .padding(.leading,250)
                         TextField("اسم المستخدم", text: $userName)
                             .padding()
                             .multilineTextAlignment(.trailing)
@@ -121,9 +127,9 @@ struct signUpScreen: View {
                         Text(errorMessageUserName ?? "")
                             .foregroundColor(.red)
                             .font(.custom("Ithra-light", size: 10))
-                        
+                        Text("البريد الإلكتروني").foregroundColor( Color("Color1")) .padding(.leading,250)
                         //
-                        TextField("الايميل", text: $email)
+                        TextField("البريد الإلكتروني", text: $email)
                             .padding()
                             .multilineTextAlignment(.trailing)
                             .padding(.trailing, 20)
@@ -142,20 +148,33 @@ struct signUpScreen: View {
                             .foregroundColor(.red)
                             .font(.custom("Ithra-light", size: 10))
                         
-                        //
-                        
-                        TextField("كلمة السر ", text: $password)
-                            .padding()
-                            .multilineTextAlignment(.trailing)
-                            .padding(.trailing, 20)
-                            .foregroundColor( Color("Color2"))
-                            .font(.custom("Ithra-light", size: 14))
-                        
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color("Color1"), lineWidth: 2)
-                                    .frame(width: 350, height: 40)
-                            )
+                        Text("كلمة السر").foregroundColor( Color("Color1")) .padding(.leading,250)
+                        HStack {
+                         
+                            Button(action: {
+                                isPasswordVisible.toggle()
+                            }) {
+                                Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
+                                    .foregroundColor(Color("Color1"))
+                                    
+                            }
+                            .padding(.leading,30)
+                            if isPasswordVisible {
+                                   TextField("كلمة السر", text: $password)
+                               } else {
+                                   SecureField("كلمة السر", text: $password)
+                               }
+                        }
+                        .padding()
+                        .multilineTextAlignment(.trailing)
+                        .padding(.trailing, 20)
+                        .foregroundColor(Color("Color2"))
+                        .font(.custom("Ithra-light", size: 14))
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color("Color1"), lineWidth: 2)
+                                .frame(width: 350, height: 40)
+                        )
                         
                         
                         Text(errorMessagePassword ?? "")
@@ -163,18 +182,33 @@ struct signUpScreen: View {
                             .font(.custom("Ithra-light", size: 10))
                         
                         //
-                        TextField("تأكيد كلمة السر ", text: $confirmPassword)
-                            .padding()
-                            .multilineTextAlignment(.trailing)
-                            .padding(.trailing, 20)
-                            .foregroundColor( Color("Color2") )
-                            .font(.custom("Ithra-light", size: 14))
-                        
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color("Color1"), lineWidth: 2)
-                                    .frame(width: 350, height: 40)
-                            )
+                        Text("تأكيد كلمة السر ").foregroundColor( Color("Color1")) .padding(.leading,250)
+                        HStack {
+                         
+                            Button(action: {
+                                isPasswordVisibleConferm.toggle()
+                            }) {
+                                Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
+                                    .foregroundColor(Color("Color1"))
+                                    
+                            }
+                            .padding(.leading,30)
+                            if isPasswordVisibleConferm {
+                                   TextField("كلمة السر", text: $confirmPassword)
+                               } else {
+                                   SecureField("كلمة السر", text: $confirmPassword)
+                               }
+                        }
+                        .padding()
+                        .multilineTextAlignment(.trailing)
+                        .padding(.trailing, 20)
+                        .foregroundColor(Color("Color2"))
+                        .font(.custom("Ithra-light", size: 14))
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color("Color1"), lineWidth: 2)
+                                .frame(width: 350, height: 40)
+                        )
                         
                         
                         Text(errorMessageConfirmPassword ?? "")
@@ -189,18 +223,21 @@ struct signUpScreen: View {
                         checkAndUploadData()
                         
                     }) {
-                        NavigationLink(destination: loginScreen()) {
-                            Text("تسجيل")
-                                .frame(width: 200, height: 15)
-                                .font(.custom("Ithra-light", size: 16))
-                            
-                                .fontWeight(.bold)
-                                .foregroundColor(Color("BackgroundColor"))
-                                .padding()
-                                .background(Color("Color2"))
-                                .cornerRadius(80)
-                                    }
-                    }.offset(y :-100)
+                        Text("تسجيل")
+                            .frame(width: 200, height: 15)
+                            .font(.custom("Ithra-light", size: 16))
+                        
+                            .fontWeight(.bold)
+                            .foregroundColor(Color("BackgroundColor"))
+                            .padding()
+                            .background(Color("Color2"))
+                            .cornerRadius(80)
+                        
+                    }
+                    .offset(y :-100)
+                    .fullScreenCover(isPresented: $isAccountScreenRegiterd) {
+                        loginScreen()
+                    }
                     
                 }
                 HStack {
@@ -229,8 +266,11 @@ struct signUpScreen: View {
                 
                 
             }
-        
+            .ignoresSafeArea(.keyboard)
+            
         }
+        
+    
         
         
     func checkAndUploadData(){
@@ -240,9 +280,9 @@ struct signUpScreen: View {
                        errorMessageUserName = nil
                    }
         if email.isEmpty{
-            errorMessageEmail="قم بتعبئة الايميل !"
+            errorMessageEmail="قم بتعبئة البريد الإلكتروني !"
         }else if !isValidEmail(email) {
-            errorMessageEmail = "الرجاء إدخال ايميل صحيح"
+            errorMessageEmail = "الرجاء إدخال بريد إلكتروني صحيح"
         }
         else {
             errorMessageEmail=nil
@@ -250,7 +290,7 @@ struct signUpScreen: View {
         if password.isEmpty{
             errorMessagePassword="قم بتعبئة كلمة السر"
         }else if password.count < 8{
-            errorMessagePassword = "يجب أن تكون كلمة السر مؤلفة من 8 أحرف"
+            errorMessagePassword = "يجب أن تكون كلمة السر مؤلفة من 8أحرف او ارقام"
         }
         else{
             errorMessagePassword=nil
@@ -298,7 +338,8 @@ struct signUpScreen: View {
                     } else {
                       //move to other page
                         
-                        
+                        isAccountScreenRegiterd = true
+
                       
                         
                     }

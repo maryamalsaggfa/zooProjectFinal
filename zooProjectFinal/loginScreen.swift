@@ -63,7 +63,7 @@ struct loginScreen: View {
     @State private var isAccountScreenPresented = false
     
     @StateObject private var userManager = UserManager()
-    
+    @State private var isPasswordVisible = false
     
 
     
@@ -92,6 +92,7 @@ struct loginScreen: View {
                                     introRegisteration()
                                 }
                                 .position(x:350,y:30)
+                
                 Text("تسجيل الدخول ")
                     .foregroundColor(Color("Color2"))
                     .font(.custom("Ithra-Bold", size: 25))
@@ -104,7 +105,7 @@ struct loginScreen: View {
               
                     
                     
-                        
+                    Text("اسم المستخدم").foregroundColor( Color("Color1")) .padding(.leading,250)
                     TextField(" اسم المستخدم", text: $userName)
                         .padding()
                         .multilineTextAlignment(.trailing)
@@ -126,21 +127,34 @@ struct loginScreen: View {
                         .font(.custom("Ithra-light", size: 10))
                     
                     //
-                    TextField("كلمة السر ", text: $password)
-                        .padding()
-                        .multilineTextAlignment(.trailing)
-                        .padding(.trailing, 20)
-                    
-                        .foregroundColor( Color("Color2"))
-                        .font(.custom("Ithra-light", size: 14))
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color("Color1"), lineWidth: 2)
-                                .frame(width: 350, height: 40)
-                            
-                        )
-                    
-                    
+                    Text("كلمة السر").foregroundColor( Color("Color1")) .padding(.leading,250)
+                    HStack {
+                     
+                        Button(action: {
+                            isPasswordVisible.toggle()
+                        }) {
+                            Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
+                                .foregroundColor(Color("Color1"))
+                                
+                        }
+                        .padding(.leading,30)
+                        if isPasswordVisible {
+                               TextField("كلمة السر", text: $password)
+                           } else {
+                               SecureField("كلمة السر", text: $password)
+                           }
+                    }
+                    .padding()
+                    .multilineTextAlignment(.trailing)
+                    .padding(.trailing, 20)
+                    .foregroundColor(Color("Color2"))
+                    .font(.custom("Ithra-light", size: 14))
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color("Color1"), lineWidth: 2)
+                            .frame(width: 350, height: 40)
+                    )
+                      
                     Text(errorMessagePassword ?? "")
                         .foregroundColor(.red)
                         .font(.custom("Ithra-light", size: 10))
@@ -207,6 +221,7 @@ struct loginScreen: View {
                 }
             }
         }
+        .ignoresSafeArea(.keyboard)
     }
     
     func checkAndLogin(userName:String , password:String){

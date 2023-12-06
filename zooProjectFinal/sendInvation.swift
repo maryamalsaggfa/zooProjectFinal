@@ -40,7 +40,8 @@ struct sendInvation: View {
         ZStack {
             Color("BackgroundColor")
                 .edgesIgnoringSafeArea(.all)
-            Button(action: { isAccountScreenPresented=true
+            Button(action: { 
+                isAccountScreenPresented=true
               }) {
                                Image(systemName: "gearshape.fill")
                                    .font(.system(size: 25))
@@ -48,7 +49,7 @@ struct sendInvation: View {
                                    .position(x: 350, y:10)
                             }   .fullScreenCover(isPresented: $isAccountScreenPresented) {
                                 // Your signUpScreen view
-                                AccountScreen()
+                                AccountScreen(userName: userName)// 
                             }
             ZStack {
                 Circle()
@@ -63,7 +64,7 @@ struct sendInvation: View {
             .offset(y: -250)
 
             VStack {
-                Text("\(userName)").foregroundColor(Color.red)
+               Text(" اسم المستخدم الخاص بك : \(userName)").foregroundColor(Color("Color2"))
                 Text("استعد لبدء المغامرة!                                                                                          قم بدعوة صديقك ليكون جزءًا من التجربة الرائعة.")
                     .font(.custom("Ithra-Light", size: 16))
                     .multilineTextAlignment(.center)
@@ -96,6 +97,8 @@ struct sendInvation: View {
                                 .stroke(Color("Color1"), lineWidth: 2)
                                 .frame(width: 350, height: 40)
                         )*/
+                    Text("ادخل اسم مستخدم صديقك لدعوته للعب")
+                        .foregroundColor( Color("Color1"))
 
                     TextField("أدخل اسم صديقك ", text: $accepterUserName)
                         .padding()
@@ -153,14 +156,14 @@ struct sendInvation: View {
     }
 
     func checkAndUpload() {
-        if senderUserName.isEmpty || accepterUserName.isEmpty {
+       if accepterUserName.isEmpty {
             errorMessageUserName = "املئ جميع الحقول !"
         } else {
             errorMessageUserName = nil
         }
 
         if errorMessageUserName == nil {
-            let newInvation = Invation(invationKey: UUID(), senderLionKey: currentUser, isAccepted: "false", accepterCatID: accepterUserName)
+            let newInvation = Invation(invationKey: UUID(), senderLionKey: userName, isAccepted: "false", accepterCatID: accepterUserName)
 
             uploadInvations(invation: newInvation)
             currentUser = newInvation.senderLionKey
@@ -192,7 +195,8 @@ struct sendInvation: View {
                 } else {
                     // Players with the specified lionKey and catID do not exist
                     print("Players not found. Invitation not uploaded.")
-                    self.errorMessage = "لا يوجد مستخدم بهذا الاسم ادخل اسم مستخدم صيحي !"
+                    
+                    self.errorMessage = "لا يوجد مستخدم بهذا الاسم ادخل اسم مستخدم صحيح !"
                 }
             }
         }
