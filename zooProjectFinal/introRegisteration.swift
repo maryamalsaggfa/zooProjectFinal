@@ -2,9 +2,10 @@ import SwiftUI
 
 struct introRegisteration: View {
     @State private var isScreenPresented = false
+    @State private var isScreenPresentedRegister = false
 
     var body: some View {
-        NavigationView {
+        
             ZStack {
                 Color("BackgroundColor").edgesIgnoringSafeArea(.all)
                 
@@ -46,8 +47,14 @@ struct introRegisteration: View {
                     Spacer()
                     Button(action: {
                         // الاكشن المرتبط بالزر هنا
-                    }) {
-                        NavigationLink(destination: signUpScreen()) {
+                        isScreenPresentedRegister = true
+                    })
+                  //  signUpScreen()
+                    
+                    {
+                        
+                        
+                       
                             Text("تسجيل")
                                 .frame(width: 200, height: 15)
                                 .font(.custom("Ithra-Bold", size: 16))
@@ -58,7 +65,9 @@ struct introRegisteration: View {
                                 .background(Color("Color2"))
                                 .cornerRadius(80)
                                 .position(x:190, y: 585)
-                        }
+                        
+                    }.fullScreenCover(isPresented: $isScreenPresentedRegister) {
+                        signUpScreen()
                     }
                    
                     
@@ -89,7 +98,7 @@ struct introRegisteration: View {
 
             }
         }
-    }}
+    }
             
             #Preview {
                 introRegisteration()

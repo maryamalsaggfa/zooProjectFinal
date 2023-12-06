@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct InfoScreen: View {
+    
     var body: some View {
         ZStack{
             Color("BackgroundColor")

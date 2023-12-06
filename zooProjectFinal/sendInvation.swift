@@ -85,7 +85,7 @@ struct sendInvation: View {
                     )
 
                 VStack {
-                    TextField("أدخل اسمك", text: $senderUserName)
+                   /* TextField("أدخل اسمك", text: $senderUserName)
                         .padding()
                         .multilineTextAlignment(.trailing)
                         .padding(.trailing, 20)
@@ -95,7 +95,7 @@ struct sendInvation: View {
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color("Color1"), lineWidth: 2)
                                 .frame(width: 350, height: 40)
-                        )
+                        )*/
 
                     TextField("أدخل اسم صديقك ", text: $accepterUserName)
                         .padding()
@@ -160,7 +160,7 @@ struct sendInvation: View {
         }
 
         if errorMessageUserName == nil {
-            let newInvation = Invation(invationKey: UUID(), senderLionKey: senderUserName, isAccepted: "false", accepterCatID: accepterUserName)
+            let newInvation = Invation(invationKey: UUID(), senderLionKey: currentUser, isAccepted: "false", accepterCatID: accepterUserName)
 
             uploadInvations(invation: newInvation)
             currentUser = newInvation.senderLionKey

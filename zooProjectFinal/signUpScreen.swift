@@ -56,6 +56,7 @@ struct signUpScreen: View {
     @State private var errorMessageConfirmPassword: String?
     @State private var isScreenPresented = false
     @State private var isAccountScreenPresented = false
+    @State private var isAccountScreenRegiterd = false
 
     
     @ObservedObject private var locationManager = LocationManager()
@@ -79,26 +80,9 @@ struct signUpScreen: View {
                 }.offset(y: -250)
                 VStack{
                     
-                    if let location = locationManager.currentLocation {
-                        Text("Latitude: \(location.coordinate.latitude)")
-                            .foregroundColor(Color(.red))
-                            .padding(.top,100)
-                        Text("Longitude: \(location.coordinate.longitude)")
-                            .foregroundColor(Color(.red))
-                    } else {
-                        Text("Waiting for location...")
-                    }
+               
                     
-                    Button("Start Location Updates") {
-                        locationManager.startLocationUpdates()
-                    }
-                    .padding()
-                    
-                    Button("Stop Location Updates") {
-                        locationManager.stopLocationUpdates()
-                    }
-                    .padding()
-                    Spacer()
+                 
                     Button(action: { isAccountScreenPresented=true
                     }) {
                         Image(systemName: "x.circle")
@@ -107,7 +91,7 @@ struct signUpScreen: View {
                     }   .fullScreenCover(isPresented: $isAccountScreenPresented) {
                         introRegisteration()
                     }
-                    .position(x:350,y:-140)
+                    .position(x:350,y:20)
                     Text("تسجيل جديد")
                         .foregroundColor(Color("Color2"))
                         .font(.custom("Ithra-Bold", size: 25))
@@ -315,6 +299,7 @@ struct signUpScreen: View {
                         print("خطأ في التسجيل: \(error.localizedDescription)")
                     } else {
                       //move to other page
+                        
                         
                       
                         

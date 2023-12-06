@@ -69,38 +69,40 @@ struct acceptInvation: View {
     
 
     var body: some View {
-        List(invationList.userInvationss) { invation in
-                        Text("Invitation from: \(invation.senderLionKey)")
-            Button(action: {
-                self.selectedInvitation = invation
-                print("clciked")
-                let userInvitionKey=selectedInvitation?.invationKey.uuidString
-                
-                updateInvitionState(invationKey: userInvitionKey ?? "", isApproved:"true")
-
-            }) {
-                Text("قبول")
-                    .frame(width: 100, height: 15)
-                    .font(.custom("Ithra-Bold", size: 16))
-                
-                    .fontWeight(.bold)
-                    .foregroundColor(Color("BackgroundColor"))
-                    .padding()
-                    .background(Color("Color2"))
-                    .cornerRadius(80)
- 
-            } .fullScreenCover(isPresented: $isAcceptedSucessfully, content: {
-                let invationKeyString = selectedInvitation?.invationKey.uuidString
-            
-                LionAR(invitionsKey: invationKeyString ?? "")
-                //send the invition key and the type of user
-             })
-                        // Add more Text views for other properties if needed
-                    }
-        .onAppear{
-            self.invationList.fetchInvaition(accepterUserName: userName) 
+            Color("BackgroundColor").edgesIgnoringSafeArea(.all)
+            List(invationList.userInvationss) { invation in
+                Text("الدعوة من صديقك : \(invation.senderLionKey)")
+                Button(action: {
+                    self.selectedInvitation = invation
+                    print("clciked")
+                    let userInvitionKey=selectedInvitation?.invationKey.uuidString
+                    
+                    updateInvitionState(invationKey: userInvitionKey ?? "", isApproved:"true")
+                    
+                }) {
+                    Text("قبول")
+                        .frame(width: 100, height: 15)
+                        .font(.custom("Ithra-Bold", size: 16))
+                    
+                        .fontWeight(.bold)
+                        .foregroundColor(Color("BackgroundColor"))
+                        .padding()
+                        .background(Color("Color2"))
+                        .cornerRadius(80)
+                    
+                } .fullScreenCover(isPresented: $isAcceptedSucessfully, content: {
+                    let invationKeyString = selectedInvitation?.invationKey.uuidString
+                    
+                    LionAR(invitionsKey: invationKeyString ?? "")
+                    //send the invition key and the type of user
+                })
+                // Add more Text views for other properties if needed
+            }
+            .onAppear{
+                self.invationList.fetchInvaition(accepterUserName: userName)
+            }
         }
-    }
+    
     func updateInvitionState(invationKey:String,isApproved: String){
         let updateData = ["isAccepted": isApproved]
         refInvtions.child(invationKey).updateChildValues(updateData){
