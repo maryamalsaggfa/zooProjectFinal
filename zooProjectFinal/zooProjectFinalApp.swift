@@ -17,7 +17,7 @@ struct zooProjectFinalApp: App {
 
     var body: some Scene {
         WindowGroup {
-            contentView(invitionsKey: "mmm", userName:"Maryam")
+           SplashScreen()
                 .onAppear {
                     AudioPlayer.shared.playMusic()
                 }

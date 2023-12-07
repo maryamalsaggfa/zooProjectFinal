@@ -127,7 +127,7 @@ struct sendInvation: View {
                     }
                     .fullScreenCover(isPresented: $isInvationSentTapped) {
                         if let invationKey = coordinator.InvationKey {
-                            LetsPlayScreen(invitionKey: invationKey)
+                            LetsPlayScreen(invitionKey: invationKey,userName: userName)
                         } else {
                             // Handle the case where InvationKey is not set yet
                             ProgressView()

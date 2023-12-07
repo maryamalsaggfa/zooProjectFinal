@@ -15,7 +15,7 @@ struct LetsPlayScreen: View {
     
     let ref = Database.database().reference().child("Invations")
     ///var onDismiss: () -> Void
-   
+    let userName: String
     
     var body: some View {
                     // Call the function when the view appear
@@ -140,7 +140,7 @@ struct LetsPlayScreen: View {
               //  readInvitionState(invitionKey:invitionKey)
                
             }.fullScreenCover(isPresented: $moveToSecondPage, content: {
-                LionAR(invitionsKey: invitionKey)
+                contentView(invitionsKey: invitionKey, userName:userName)
             })
             
             .onAppear {
@@ -201,6 +201,6 @@ struct LetsPlayScreen: View {
 
 struct LetsPlayScreen_Previews: PreviewProvider {
     static var previews: some View {
-        LetsPlayScreen(invitionKey: "YourDummyInvitationKey")
+        LetsPlayScreen(invitionKey: "YourDummyInvitationKey",userName: "user name")
     }
 }
